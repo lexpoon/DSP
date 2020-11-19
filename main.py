@@ -17,6 +17,21 @@ SYMBOLS = [' ', '/', '-', '&', ',', '\’','\‘', '\'', "'"]
 
 user_id_list = ['x', 'y']
 
+
+def move_files(filename):
+    shutil.move("%s/%s" %(fileDir, filename), "%s/RESULTS/%s" %(fileDir, filename))
+
+def create_file(filename, df):
+    df.to_excel(filename, index=False)
+    move_files(filename)
+
+def clean_column(df, column):
+    for symbol in SYMBOLS:
+        df["%s" %column] = df["%s" %column].astype(str).str.replace(r'%s' % symbol,'')
+    return df
+
+''' STANDAARD '''
+
 class Client:
     def __init__(self, user_id, country, location):
         self.id = user_id
@@ -40,20 +55,6 @@ class Client:
 		self.province = df.loc[df['Gemeentenaam'] == self.location, 'Provincie']
 
 
-
-def move_files(filename):
-    shutil.move("%s/%s" %(fileDir, filename), "%s/RESULTS/%s" %(fileDir, filename))
-
-def create_file(filename, df):
-    df.to_excel(filename, index=False)
-    move_files(filename)
-
-def clean_column(df, column):
-    for symbol in SYMBOLS:
-        df["%s" %column] = df["%s" %column].astype(str).str.replace(r'%s' % symbol,'')
-    return df
-
-''' STANDAARD '''
 
 def get_city_list():
     df = pd.read_csv(f"{fileDir}/Data/gemeentes.csv", header=0)
