@@ -1,6 +1,5 @@
 import csv
 import os
-import string
 import random
 import collections
 from collections import defaultdict
@@ -37,21 +36,18 @@ class Client:
         self.id = user_id
         self.sessions = []
         self.location = location
-        self.country = country
-
-    def addSession(self,session):
-        self.sessions.append(session)
-
-    def isDutch(self):
-
-        if self.country == 'Netherlands':
+        if country == 'Netherlands':
             self.dutch = True
         else:
             self.dutch = False
 
-		return
+    @staticmethod
+    def addSession(session):
+        self.sessions.append(session)
 
-	def getProvince(self, df):
+
+    @staticmethod
+	def getProvince(df):
 		self.province = df.loc[df['Gemeentenaam'] == self.location, 'Provincie']
 
 
