@@ -1,6 +1,5 @@
 import csv
 import os
-import string
 import random
 import collections
 from collections import defaultdict
@@ -33,27 +32,21 @@ def clean_column(df, column):
 ''' STANDAARD '''
 
 class Client:
+
     def __init__(self, user_id, country, location):
         self.id = user_id
         self.sessions = []
         self.location = location
-        self.country = country
-
-    def addSession(self,session):
-        self.sessions.append(session)
-
-    def isDutch(self):
-
-        if self.country == 'Netherlands':
+        if country == 'Netherlands':
             self.dutch = True
         else:
             self.dutch = False
 
-		return
+    def addSession(self, session):
+        self.sessions.append(session)
 
-	def getProvince(self, df):
-		self.province = df.loc[df['Gemeentenaam'] == self.location, 'Provincie']
-
+    def create_province(self, df):
+        self.province = df.loc[df['Gemeentenaam'] == self.location, 'Provincie']
 
 
 def get_city_list():
