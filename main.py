@@ -32,6 +32,7 @@ def clean_column(df, column):
 ''' STANDAARD '''
 
 class Client:
+
     def __init__(self, user_id, country, location):
         self.id = user_id
         self.sessions = []
@@ -41,15 +42,11 @@ class Client:
         else:
             self.dutch = False
 
-    @staticmethod
-    def addSession(session):
+    def addSession(self, session):
         self.sessions.append(session)
 
-
-    @staticmethod
-	def getProvince(df):
-		self.province = df.loc[df['Gemeentenaam'] == self.location, 'Provincie']
-
+    def create_province(self, df):
+        self.province = df.loc[df['Gemeentenaam'] == self.location, 'Provincie']
 
 
 def get_city_list():
