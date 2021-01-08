@@ -11,10 +11,9 @@ import matplotlib.pyplot as plt
 fileDir = os.path.dirname(os.path.realpath('__file__'))
 currentdate = date.today().strftime('%Y.%m.%d')
 # currentdate = '2019.04.02'
-import json
 # Import our other files
-from reccommendations import top_ten_random
-
+from recommendations import top_ten_random
+# from analytics import run_all
 
 SYMBOLS = [' ', '/', '-', '&', ',', '\’','\‘', '\'', "'"]
 
@@ -56,7 +55,7 @@ def import_museum_file(file):
     pass
 
 def get_city_list():
-    df = pd.read_excel(f"{fileDir}\gemeentes1.xlsx", header=0)
+    df = pd.read_excel(f"{fileDir}/gemeentes1.xlsx", header=0)
 
     df.drop(['Gemeentecode'], axis=1, inplace=True)
     return df
@@ -72,6 +71,7 @@ def new_user(clientid, sessionid, city, province, id_list):
     else:
         return top_ten_random(id_list)
 
+
 def initial_run(clientid, sessionid, city, province, id_list):
     global user_id_list, sessions_id_list
 
@@ -85,17 +85,29 @@ def initial_run(clientid, sessionid, city, province, id_list):
 
 # RUN IS KNOWN CODE HERE
 def get_files_in_place():
-
+    global museum_df
     df = pd.read_csv(f"{fileDir}/musea.csv", header=0)
-    museum_df = df['translationSetId']
+
+    museum_df = df[['translationSetId','publicName']]
     #returns the ID list (probably better for later
-    # id_list = df['id'].tolist()
+    id_list = df['translationSetId'].tolist()
     #returns names of museums, to make output more readably
-    id_list = df['publicName'].tolist()
+    # id_list = df['publicName'].tolist()
 
 
     province_df = get_city_list()
-    return museum_df, id_list, province_df
-museum_df, id_list, province_df = get_files_in_place()
+    return id_list, province_df
+def convert_museumid_to_name(recom_list):
+    print(museum_df.head())
+    museum_name_list = []
+    for x in recom_list:
+        museum_name_list.append(museum_df.loc[museum_df['translationSetId'] == x].publicName.iloc[0])
+
+    return museum_name_list
+
+id_list, province_df = get_files_in_place()
 recom_list = initial_run(1,2,3, province_df, id_list)
-print(recom_list)
+museum_list = convert_museumid_to_name(recom_list)
+print(f'Museum Names: {museum_list}\n\nMuseum IDs: {recom_list}')
+
+
