@@ -66,6 +66,7 @@ def create_true_falses_addition(row):
         row['restaurant'] = 0
     return row
 
+
 def create_true_falses_multiplication(row):
     data = literal_eval(row['facilities'])
     if 'MuseumLibrary' in data:

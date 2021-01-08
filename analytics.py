@@ -15,6 +15,7 @@ currentdate = date.today().strftime('%Y.%m.%d')
 import json
 SYMBOLS = [' ', '/', '-', '&', ',', '\’','\‘', '\'', "'"]
 
+
 def move_files(filename):
 	shutil.move("%s/%s" %(fileDir, filename), "%s/RESULTS/%s" %(fileDir, filename))
 
@@ -84,6 +85,7 @@ def run_all():
 
     count_content(df)
 
-
+def test():
+    pass
 
 run_all()

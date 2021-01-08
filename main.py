@@ -71,6 +71,7 @@ def new_user(clientid, sessionid, city, province, id_list):
     else:
         return top_ten_random(id_list)
 
+
 def initial_run(clientid, sessionid, city, province, id_list):
     global user_id_list, sessions_id_list
 
