@@ -1,4 +1,3 @@
-
 import csv
 import os
 import string
@@ -29,7 +28,6 @@ def clean_column(df, column):
 	return df
 
 ''' STANDAARD '''
-print(pd.options.display.max_columns)
 
 def clean_rows_pageviews(row):
     data = row['dimensions']
@@ -40,99 +38,52 @@ def clean_rows_pageviews(row):
     row['contentid'] = data[3]
     row['path'] = data[4]
     return row
-
-def clean_rows_sessions(row):
-    data = row['dimensions']
-    row['clientid'] = data[0]
-    row['sessionid'] = data[1]
-    row['country'] =data[3]
-    row['city'] = data[4]
-    row['source_left'] = data[5].split('/')[0]
-    row['source_right'] = data[5].split('/')[1]
-
-    return row
-
-def clean_rows_events(row):
-    data = row['dimensions']
-    row['clientid'] = data[0]
-    row['sessionid'] = data[1]
-    row['date'] = data[2].split('T')[0]
-    row['time']= data[2].split('T')[1]
-    row['contentid'] = data[3]
-    row['path'] = data[4]
-    return row
-
-# def clean_rows_conversions(row):
-#     data = row['dimensions']
-#     row['clientid'] = data[0]
-#     row['sessionid'] = data[1]
-#     row['date'] = data[2].split('T')[0]
-#     row['time']= data[2].split('T')[1]
-#     row['contentid'] = data[3]
-#     row['path'] = data[4]
-#     return row
-
-def create_dataframe_pageviews():
-    with open("Data/pageviews/pageviews-2020-07-29.json", "r") as read_file:
+# Deze functie gebruiken bij hele data set, hieronder wordt functie gebruikt waar maar 1000 instances worden geladen
+def create_dataframe_pageviews(filename):
+    with open(f"{fileDir}/Data/pageviews/{filename}", "r") as read_file:
         data = json.load(read_file)
     new_data = data['reports'][0]['data']['rows']
     df = pd.DataFrame.from_dict(new_data)
     df = df.apply(clean_rows_pageviews, axis=1)
-
     df.drop(columns=['dimensions', 'metrics'], inplace=True)
 
-    print('Reading files for: Pagevies\n')
-    print(df.head())
-
+    # print(df.head())
+    # print(df.shape)
+    # print(df.info())
     return df
 
-def create_dataframe_sessions():
-    with open("Data/sessions/sessions-2020-07-29.json", "r") as read_file:
-        data = json.load(read_file)
-    new_data = data['reports'][0]['data']['rows']
-    df = pd.DataFrame.from_dict(new_data)
-    df = df.apply(clean_rows_sessions, axis=1)
-
-    df.drop(columns=['dimensions', 'metrics'], inplace=True)
-
-    print('Reading files for: Sessions\n')
-    print(df.head())
-    print(df.source_right.unique())
-    return df
-
-# def create_dataframe_events():
-#     with open("Data/events/events-2020-07-29.json", "r") as read_file:
-#         data = json.load(read_file)
-#     new_data = data['reports'][0]['data']['rows']
-#     df = pd.DataFrame.from_dict(new_data)
-#     df = df.apply(clean_rows, axis=1)
-#
-#     df.drop(columns=['dimensions', 'metrics'], inplace=True)
-#
-#     print('Reading files for: Events\n')
-#     print(df.loc[df['contentid'] == 'b5023390-ced1-4210-a14c-23c349b2ee15'].count())
+# def create_dataframe_pageviews_preloaded():
+#     df = pd.read_csv('small_pageviews.csv')
 #     print(df.head())
-#     df.loc[df['clientid'] == '0929.2360171582027101'].count()
-
+#     print(df.shape)
+#     print(df.info())
 #     return df
 
-# def create_dataframe_conversions():
-#     with open("Data/conversions/conversions-2020-07-29.json", "r") as read_file:
-#         data = json.load(read_file)
-#     new_data = data['reports'][0]['data']['rows']
-#     df = pd.DataFrame.from_dict(new_data)
-#     df = df.apply(clean_rows, axis=1)
-#
-#     df.drop(columns=['dimensions', 'metrics'], inplace=True)
-#
-#     print('Reading files for: Conversions\n')
-#     print(df.loc[df['contentid'] == 'b5023390-ced1-4210-a14c-23c349b2ee15'].count())
-#     print(df.head())
-#
-#     return df
+def count_content(df):
+    count_series = df.groupby(['clientid', 'contentid']).size()
+    print(count_series)
+    new_df = count_series.to_frame(name = 'amount').reset_index()
+    new_df.sort_values(by=['amount'], ascending=False, inplace=True)
+    print(new_df)
+    new_df.to_csv('full_run_vectors_counts.csv')
 
-df_pageview = create_dataframe_pageviews()
-df_sessions = create_dataframe_sessions()
 
-# df_events = create_dataframe_events()
-# df_conversions = create_dataframe_conversions()
+def run_all():
+    # df = pd.DataFrame(columns=['clientid', 'contentid'])
+    path = f'{fileDir}/Data/pageviews/'
+    frames = []
+    for file in os.listdir(path):
+        print(f'Reading files for: {file}\n')
+
+        df_pageview = create_dataframe_pageviews(file)
+        print(df_pageview.shape)
+        frames.append(df_pageview)
+    df = pd.concat(frames)
+    df.to_csv('full_run_vectors.csv')
+    print(df.shape,df.head())
+
+    count_content(df)
+
+
+
+run_all()
