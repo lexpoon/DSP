@@ -69,6 +69,8 @@ def create_true_falses_addition(row):
 
 def create_true_falses_multiplication(row):
     data = literal_eval(row['facilities'])
+
+    # These are the vector updates based on the facilities column
     if 'MuseumLibrary' in data:
         row['bieb'] = 2
     else:
@@ -97,6 +99,9 @@ def create_true_falses_multiplication(row):
         row['restaurant'] = 2
     else:
         row['restaurant'] = 1
+
+    # These are the vector updates based on the categories found in the external museum data file
+
     return row
 
 # def create_true_falses_multiplication(row):
@@ -138,6 +143,11 @@ def create_dataframe(filename):
     print(len(df_cleaned))
     return df_cleaned
 
+def apply_onehot(df):
+    one_hot_cat = df.museaal_thema.str.get_dummies(', ')
+    df = pd.concat([df, one_hot_cat], axis=1)
+    return df
+
 def create_lists(df, x):
     mylist = df[f'{x}'].tolist()
     myarray = np.array(mylist)
@@ -148,28 +158,46 @@ def create_row_vectors(row):
     index = row['index']
     vector = np.zeros(496, dtype=object)
     vector += 1
-    if row['bieb'] != 1:
-        vector *= bieb_array
-    if row['openair'] != 1:
-        vector *= openair_array
-    if row['parking'] != 1:
-        vector *= parking_array
-    if row['weelchair'] != 1:
-        vector *= weelchair_array
-    if row['disabled'] != 1:
-        vector *= disabled_array
-    if row['trainstation'] != 1:
-        vector *= trainstation_array
-    if row['restaurant'] != 1:
-        vector *= restaurant_array
+    vector *= bieb_array
+    vector *= openair_array
+    vector *= parking_array
+    vector *= weelchair_array
+    vector *= disabled_array
+    vector *= trainstation_array
+    vector *= restaurant_array
     vector[index] = 1
     return vector
 
+def create_row_vectors(row):
+
+    index = row['index']
+    vector = np.zeros(496, dtype=object)
+    vector += 1
+    if row['bieb'] != 0:
+        vector *= bieb_array
+    if row['openair'] != 0:
+        vector *= openair_array
+    if row['parking'] != 0:
+        vector *= parking_array
+    if row['weelchair'] != 0:
+        vector *= weelchair_array
+    if row['disabled'] != 0:
+        vector *= disabled_array
+    if row['trainstation'] != 0:
+        vector *= trainstation_array
+    if row['restaurant'] != 0:
+        vector *= restaurant_array
+    vector[index] = 1
+    return vector
 # Create the dataframe from the museum file and so some cleaning
 filename = 'musea.csv'
 df = create_dataframe(filename)
 df = df.drop_duplicates(subset=['publicName'])
 df.rename(columns={'Unnamed: 0': "index"}, inplace=True)
+# Import the extra categories from the visitor file
+df_visitor = create_dataframe('Notebooks/museua_visitors.csv')
+df = df.merge(df_visitor, on='translationSetId')
+
 # Add all the facilites as on its own columns
 df[['bieb', 'openair', 'parking', 'weelchair', 'disabled', 'trainstation', 'restaurant']] = False
 # For every facility add the increase/weight/update value which will be converted to the update arrays
