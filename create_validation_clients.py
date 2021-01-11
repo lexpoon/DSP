@@ -66,7 +66,7 @@ def get_random_museums(df, number):
 # print(random.randint(0,9))
 def create_new_client():
     client_id = ''.join(random.sample(string.ascii_lowercase, 10))
-    number_of_museums = 10
+    number_of_museums = 5
     my_list = get_random_museums(rules_df, number_of_museums)
     df = pd.DataFrame()
     for id in my_list:
@@ -78,7 +78,7 @@ def create_new_client():
 def get_dataframe():
 
     frames = []
-    for i in range(1):
+    for i in range(10):
         temp_df = create_new_client()
         frames.append(temp_df)
     df = pd.concat(frames)

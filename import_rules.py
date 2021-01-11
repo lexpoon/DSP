@@ -98,33 +98,33 @@ def create_row_vectors(row):
     vector = np.zeros(496, dtype=object)
     vector += 1
     if row['bieb'] != 0:
-        vector *= bieb_array
+        vector += bieb_array
     if row['openair'] != 0:
-        vector *= openair_array
+        vector += openair_array
     if row['parking'] != 0:
-        vector *= parking_array
+        vector += parking_array
     if row['weelchair'] != 0:
-        vector *= weelchair_array
+        vector += weelchair_array
     if row['disabled'] != 0:
-        vector *= disabled_array
+        vector += disabled_array
     if row['trainstation'] != 0:
-        vector *= trainstation_array
+        vector += trainstation_array
     if row['restaurant'] != 0:
-        vector *= restaurant_array
+        vector += restaurant_array
     if row['History'] != 0:
-        vector *= history_array
+        vector += history_array
     if row['Visual'] != 0:
-        vector *= visual_array
+        vector += visual_array
     if row['Culture'] != 0:
-        vector *= culture_array
+        vector += culture_array
     if row['Naval'] != 0:
-        vector *= naval_array
+        vector += naval_array
     if row['Nature'] != 0:
-        vector *= nature_array
+        vector += nature_array
     if row['Tech'] != 0:
-        vector *= tech_array
+        vector += tech_array
     if row['Ethnology'] != 0:
-        vector *= ethnology_array
+        vector += ethnology_array
 
     vector[index] = 1
     return vector

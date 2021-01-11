@@ -36,20 +36,31 @@ def clean_column(df, column):
 ''' STANDAARD '''
 from ast import literal_eval
 
-def convert_museumid_to_name(recom_list):
+def convert_museumid_to_name(vector):
     df = pd.read_csv(f"{fileDir}/musea.csv", header=0)
     museum_df = df[['translationSetId','publicName']]
+    # mylist  = np.argmax(vector)
+    ind = np.argpartition(vector, -10)[-10:]
+
+    n = 10
+    idx = (-vector).argsort()[:n]
+    idx = idx.tolist()
+    print(idx)
+    recom_list = []
 
     museum_name_list = []
-    for x in recom_list:
-        museum_name_list.append(museum_df.loc[museum_df['translationSetId'] == x].publicName.iloc[0])
-
-    return museum_name_list
+    museum_id_list = []
+    for x in idx:
+        museum_id_list.append(museum_df.loc[x].at['translationSetId'])
+        museum_name_list.append(museum_df.loc[x].at['publicName'])
+    # print(museum_name_list)
+    return museum_name_list, museum_id_list
 
 def update_vectors(new, old):
 
-    myarray = np.array(new)
-    myarray = old*myarray
+    myarray = np.array(new.values[0])
+    new_array = np.transpose(myarray)
+    myarray = old*new_array
     return myarray
 
 def new_user(clientid):
@@ -57,18 +68,17 @@ def new_user(clientid):
     vector += 1.0
     return vector
 
-
 def run_all():
     client_vector_dict = {}
     client_id_list = []
     input_df = get_dataframe()
+    print(input_df)
     count = 0
     for index, row in input_df.iterrows():
         client = row['clientid']
         museum = row['translationSetId']
         count = row['count']
 
-        vector = client_vector_dict.get(client)
 
         if client in client_id_list:
             vector = client_vector_dict.get(client)
@@ -76,16 +86,13 @@ def run_all():
             client_id_list.append(client)
             vector = new_user(client)
 
-        # update_vector = update_vector(vector, museum, count)
-        # temp_df = df[(column == 1)]
         museum_vector = vector_df[(vector_df['translationSetId'] == museum)].vector
-
         calculated_vector = update_vectors(museum_vector, vector)
-        # print(calculated_vector)
-        count +=1
-        client_vector_dict.update({client: calculated_vector})
-        # museum_list = convert_museumid_to_name(recom_list)
-    print(count)
+        client_vector_dict[client] = calculated_vector
 
-
+    df = pd.DataFrame()
+    for k, v in client_vector_dict.items():
+        museum_name_list, museum_id_list = convert_museumid_to_name(v)
+        df = df.append({'clientid': k, 'museum_list': museum_name_list, 'museum_id': museum_id_list}, ignore_index=True)
+    df.to_csv('result_client_museums.csv')
 run_all()
