@@ -112,19 +112,19 @@ def create_row_vectors(row):
     if row['restaurant'] != 0:
         vector *= restaurant_array
     if row['History'] != 0:
-        vector *= restaurant_array
+        vector *= history_array
     if row['Visual'] != 0:
-        vector *= restaurant_array
+        vector *= visual_array
     if row['Culture'] != 0:
-        vector *= restaurant_array
+        vector *= culture_array
     if row['Naval'] != 0:
-        vector *= restaurant_array
+        vector *= naval_array
     if row['Nature'] != 0:
-        vector *= restaurant_array
+        vector *= nature_array
     if row['Tech'] != 0:
-        vector *= restaurant_array
+        vector *= tech_array
     if row['Ethnology'] != 0:
-        vector *= restaurant_array
+        vector *= ethnology_array
 
     vector[index] = 1
     return vector
@@ -134,6 +134,10 @@ filename = 'musea.csv'
 df = create_dataframe(filename)
 df = df.drop_duplicates(subset=['publicName'])
 df.rename(columns={'Unnamed: 0': "index"}, inplace=True)
+df = df[['publicName', 'index', 'translationSetId', 'facilities']]
+df = df.sort_values('translationSetId')
+df = df.reset_index(drop=True)
+
 # Import the extra categories from the visitor file
 df_visitor = create_dataframe('Notebooks/museua_visitors.csv')
 df = df.merge(df_visitor, how='left', left_on='translationSetId', right_on='translationSetId')
@@ -142,7 +146,10 @@ df = df.fillna(0)
 df[['bieb', 'openair', 'parking', 'weelchair', 'disabled', 'trainstation', 'restaurant']] = False
 # For every facility add the increase/weight/update value which will be converted to the update arrays
 df = df.apply(create_true_falses_multiplication, axis=1)
+df.drop(columns='publicName_y')
+df.rename(columns={'publicName_x': "publicName"}, inplace=True)
 
+df.to_csv('rules_overview.csv')
 # Create the update arrays for all the facilities
 bieb_array = create_lists(df, 'bieb', 2)
 openair_array = create_lists(df, 'openair', 10)
@@ -151,15 +158,15 @@ weelchair_array = create_lists(df, 'weelchair', 12)
 disabled_array = create_lists(df, 'disabled', 15)
 trainstation_array = create_lists(df, 'trainstation', 7)
 restaurant_array = create_lists(df, 'restaurant', 1)
-history = create_lists(df, 'History', 2)
-visual = create_lists(df, 'Visual', 3)
-culture = create_lists(df, 'Culture', 3)
-naval = create_lists(df, 'Naval', 4)
-nature = create_lists(df, 'Nature', 4)
-tech = create_lists(df, 'Tech', 4)
-ethnology = create_lists(df, 'Ethnology', 3)
+history_array = create_lists(df, 'History', 4)
+visual_array = create_lists(df, 'Visual', 5)
+culture_array = create_lists(df, 'Culture', 5)
+naval_array = create_lists(df, 'Naval', 7)
+nature_array = create_lists(df, 'Nature', 6)
+tech_array = create_lists(df, 'Tech', 6)
+ethnology_array = create_lists(df, 'Ethnology', 6)
 
-print(df.head())
+print(df)
 df['vector'] = df.apply(create_row_vectors, axis=1)
 
 print(df['vector'].head(n=50))

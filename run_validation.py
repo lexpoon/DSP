@@ -14,11 +14,13 @@ currentdate = date.today().strftime('%Y.%m.%d')
 # Import our other files
 from recommendations import top_ten_random
 from analytics import run_all_analytics
+from ast import literal_eval
 
 SYMBOLS = [' ', '/', '-', '&', ',', '\’','\‘', '\'', "'"]
 global user_id_list
 user_id_list = []
 
+analytics_df = run_all_analytics()
 
 def move_files(filename):
     shutil.move("%s/%s" %(fileDir, filename), "%s/RESULTS/%s" %(fileDir, filename))
@@ -63,6 +65,7 @@ class Client:
 
 
 def update_vector(in_vector):
+    pass
 
 def new_user(clientid):
     global user_id_list

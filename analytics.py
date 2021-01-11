@@ -17,16 +17,16 @@ SYMBOLS = [' ', '/', '-', '&', ',', '\’','\‘', '\'', "'"]
 
 
 def move_files(filename):
-	shutil.move("%s/%s" %(fileDir, filename), "%s/RESULTS/%s" %(fileDir, filename))
+    shutil.move("%s/%s" %(fileDir, filename), "%s/RESULTS/%s" %(fileDir, filename))
 
 def create_file(filename, df):
-	df.to_excel(filename, index=False)
-	move_files(filename)
+    df.to_excel(filename, index=False)
+    move_files(filename)
 
 def clean_column(df, column):
-	for symbol in SYMBOLS:
-		df["%s" %column] = df["%s" %column].astype(str).str.replace(r'%s' % symbol,'')
-	return df
+    for symbol in SYMBOLS:
+        df["%s" %column] = df["%s" %column].astype(str).str.replace(r'%s' % symbol,'')
+    return df
 
 ''' STANDAARD '''
 
@@ -67,25 +67,28 @@ def count_content(df):
     new_df.sort_values(by=['amount'], ascending=False, inplace=True)
     print(new_df)
     new_df.to_csv('full_run_vectors_counts.csv')
+    return new_df
 
-
-def run_all():
+def run_all_analytics():
     # df = pd.DataFrame(columns=['clientid', 'contentid'])
-    path = f'{fileDir}/Data/pageviews/'
-    frames = []
-    for file in os.listdir(path):
-        print(f'Reading files for: {file}\n')
+    months = ['aug', 'sept']
+    dataframes = []
+    for month in months:
 
-        df_pageview = create_dataframe_pageviews(file)
-        print(df_pageview.shape)
-        frames.append(df_pageview)
-    df = pd.concat(frames)
+        path = f'{fileDir}/Data/{month}/pageviews/'
+        frames = []
+        for file in os.listdir(path):
+            print(f'Reading files for: {file}\n')
+
+            df_pageview = create_dataframe_pageviews(file)
+            print(df_pageview.shape)
+            frames.append(df_pageview)
+        df = pd.concat(frames)
+        dataframes.append(df)
+    df = pd.concat(dataframes)
     df.to_csv('full_run_vectors.csv')
     print(df.shape,df.head())
 
-    count_content(df)
+    return count_content(df)
 
-def test():
-    pass
-
-run_all()
+df = run_all_analytics()
