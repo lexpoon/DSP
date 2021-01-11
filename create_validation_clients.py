@@ -1,6 +1,6 @@
 import csv
 import os
-import random
+import random, string
 import collections
 from collections import defaultdict
 import shutil
@@ -46,19 +46,36 @@ def convert_museumid_to_name(recom_list):
     return museum_name_list
 
 
-def get_random_museums(feature, df):
+def get_feature():
+    print('1. History\n2. Visual\n3. Culture\n4. Culture\n5. Naval\n6. Tech\n7. Ethnology\n8. Library\n9. Openair\n10. Parking\n11. Weelchair\n12. Disabled\n13. Trainstation\n14. Restaurant\n')
+    feature = input('Choose a feature from the list above:\n')
+    return feature
+
+def get_random_museums(df, number):
+    feature = get_feature()
     feature = int(feature) + 6
     column = df[df.columns[feature]]
     temp_df = df[(column == 1)]
-    list = temp_df['translationSetId'].to_list()
-    print(list)
+    mylist = temp_df['translationSetId'].to_list()
+    top_ten = random.choices(mylist,k=number)
+    print(top_ten)
+    return top_ten
 
 # print(random.randint(0,9))
+def create_new_client():
+    client_id = ''.join(random.sample(string.ascii_lowercase, 10))
+    number_of_museums = 10
+    my_list = get_random_museums(rules_df, number_of_museums)
+    df = pd.DataFrame()
+    for id in my_list:
+        count = random.randint(0,9)
 
+        df = df.append({'clientid': client_id, 'translationSetId': id, 'count': count}, ignore_index=True)
+    return df
 
-# print('1. History\n2. Visual\n3. Culture\n4. Culture\n5. Naval\n6. Tech\n7. Ethnology\n')
-# feature = input('Choose a feature from the list above:\n')
-# get_random_museums(feature, rules_df)
-# print('1. History\n2. Visual\n3. Culture\n4. Culture\n5. Naval\n6. Tech\n7. Ethnology\n')
-# feature = input('Choose a feature from the list above:\n')
-get_random_museums('1', rules_df)
+frames = []
+for i in range(10):
+    temp_df = create_new_client()
+    frames.append(temp_df)
+df = pd.concat(frames)
+print(df)
