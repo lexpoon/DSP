@@ -47,8 +47,10 @@ def convert_museumid_to_name(recom_list):
 
 
 def get_feature():
-    print('1. History\n2. Visual\n3. Culture\n4. Culture\n5. Naval\n6. Tech\n7. Ethnology\n8. Library\n9. Openair\n10. Parking\n11. Weelchair\n12. Disabled\n13. Trainstation\n14. Restaurant\n')
-    feature = input('Choose a feature from the list above:\n')
+    # print('1. History\n2. Visual\n3. Culture\n4. Culture\n5. Naval\n6. Tech\n7. Ethnology\n8. Library\n9. Openair\n10. Parking\n11. Weelchair\n12. Disabled\n13. Trainstation\n14. Restaurant\n')
+    # feature = input('Choose a feature from the list above:\n')
+    feature = random.randint(1,13)
+
     return feature
 
 def get_random_museums(df, number):
@@ -68,14 +70,16 @@ def create_new_client():
     my_list = get_random_museums(rules_df, number_of_museums)
     df = pd.DataFrame()
     for id in my_list:
-        count = random.randint(0,9)
+        count = random.randint(1,3)
 
         df = df.append({'clientid': client_id, 'translationSetId': id, 'count': count}, ignore_index=True)
     return df
 
-frames = []
-for i in range(10):
-    temp_df = create_new_client()
-    frames.append(temp_df)
-df = pd.concat(frames)
-print(df)
+def get_dataframe():
+
+    frames = []
+    for i in range(1):
+        temp_df = create_new_client()
+        frames.append(temp_df)
+    df = pd.concat(frames)
+    return df

@@ -128,7 +128,8 @@ def create_row_vectors(row):
 
     vector[index] = 1
     return vector
-
+def return_vector(df):
+    return df
 # Create the dataframe from the museum file and so some cleaning
 filename = 'musea.csv'
 df = create_dataframe(filename)
@@ -152,19 +153,19 @@ df.rename(columns={'publicName_x': "publicName"}, inplace=True)
 df.to_csv('rules_overview.csv')
 # Create the update arrays for all the facilities
 bieb_array = create_lists(df, 'bieb', 2)
-openair_array = create_lists(df, 'openair', 10)
-parking_array = create_lists(df, 'parking', 8)
-weelchair_array = create_lists(df, 'weelchair', 12)
-disabled_array = create_lists(df, 'disabled', 15)
-trainstation_array = create_lists(df, 'trainstation', 7)
-restaurant_array = create_lists(df, 'restaurant', 1)
-history_array = create_lists(df, 'History', 4)
-visual_array = create_lists(df, 'Visual', 5)
-culture_array = create_lists(df, 'Culture', 5)
-naval_array = create_lists(df, 'Naval', 7)
-nature_array = create_lists(df, 'Nature', 6)
-tech_array = create_lists(df, 'Tech', 6)
-ethnology_array = create_lists(df, 'Ethnology', 6)
+openair_array = create_lists(df, 'openair', 3)
+parking_array = create_lists(df, 'parking', 2)
+weelchair_array = create_lists(df, 'weelchair', 4)
+disabled_array = create_lists(df, 'disabled', 5)
+trainstation_array = create_lists(df, 'trainstation', 2)
+restaurant_array = create_lists(df, 'restaurant', 2)
+history_array = create_lists(df, 'History', 2)
+visual_array = create_lists(df, 'Visual', 2)
+culture_array = create_lists(df, 'Culture', 3)
+naval_array = create_lists(df, 'Naval', 3)
+nature_array = create_lists(df, 'Nature', 3)
+tech_array = create_lists(df, 'Tech', 3)
+ethnology_array = create_lists(df, 'Ethnology', 3)
 
 print(df)
 df['vector'] = df.apply(create_row_vectors, axis=1)

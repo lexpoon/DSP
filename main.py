@@ -13,8 +13,9 @@ currentdate = date.today().strftime('%Y.%m.%d')
 # currentdate = '2019.04.02'
 # Import our other files
 from recommendations import top_ten_random
-from analytics import run_all_analytics
-
+# from analytics import run_all_analytics
+from create_validation_clients import get_dataframe
+from import_rules import vector_df
 SYMBOLS = [' ', '/', '-', '&', ',', '\’','\‘', '\'', "'"]
 global user_id_list
 user_id_list = []
@@ -33,6 +34,7 @@ def clean_column(df, column):
     return df
 
 ''' STANDAARD '''
+from ast import literal_eval
 
 def convert_museumid_to_name(recom_list):
     df = pd.read_csv(f"{fileDir}/musea.csv", header=0)
@@ -44,53 +46,46 @@ def convert_museumid_to_name(recom_list):
 
     return museum_name_list
 
+def update_vectors(new, old):
 
-
-class Client:
-    id_list = []
-    def __init__(self, user_id):
-        self.id = user_id
-        Client.id_list.append(user_id)
-        self.vector = self.initialze_vector()
-
-    def initialze_vector(self):
-        vector = np.zeros(496, dtype=object)
-        vector += 1
-        return vector
-
-    def update_vector(self, input_vec):
-        self.vector *= input_vec
-
-
-def update_vector(in_vector):
+    myarray = np.array(new)
+    myarray = old*myarray
+    return myarray
 
 def new_user(clientid):
-    global user_id_list
-    user_id_list.append(clientid)
-
     vector = np.zeros(496, dtype=object)
-    vector += 1
-
-
-def initial_run(clientid, translationsetid, count):
-    global user_id_list, sessions_id_list
-
-    if clientid not in user_id_list:
-        vector = new_user(clientid, translationsetid, count)
-
-    else:
-        #hier opnieuw een oude client aanmaken op basis van oude ID, moet nog fixen
-        client = Client()
-        recommendation_list = known_user(client)
-    return recommendation_list
+    vector += 1.0
+    return vector
 
 
 def run_all():
-
-    input_df = run_all_analytics()
+    client_vector_dict = {}
+    client_id_list = []
+    input_df = get_dataframe()
+    count = 0
     for index, row in input_df.iterrows():
+        client = row['clientid']
+        museum = row['translationSetId']
+        count = row['count']
 
-        recom_list = initial_run(row['clientid'], row['translationSetId'], row['count'])
-        museum_list = convert_museumid_to_name(recom_list)
+        vector = client_vector_dict.get(client)
+
+        if client in client_id_list:
+            vector = client_vector_dict.get(client)
+        else:
+            client_id_list.append(client)
+            vector = new_user(client)
+
+        # update_vector = update_vector(vector, museum, count)
+        # temp_df = df[(column == 1)]
+        museum_vector = vector_df[(vector_df['translationSetId'] == museum)].vector
+
+        calculated_vector = update_vectors(museum_vector, vector)
+        # print(calculated_vector)
+        count +=1
+        client_vector_dict.update({client: calculated_vector})
+        # museum_list = convert_museumid_to_name(recom_list)
+    print(count)
 
 
+run_all()
