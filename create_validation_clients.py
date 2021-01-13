@@ -61,13 +61,14 @@ def get_random_museums(df, number):
     mylist = temp_df['translationSetId'].to_list()
     top_ten = random.choices(mylist,k=number)
     print(top_ten)
-    return top_ten
+    feature = feature-6
+    return top_ten, feature
 
-# print(random.randint(0,9))
+# print(random.randint(0,9))j
 def create_new_client():
     client_id = ''.join(random.sample(string.ascii_lowercase, 10))
     number_of_museums = 5
-    my_list = get_random_museums(rules_df, number_of_museums)
+    my_list, feature = get_random_museums(rules_df, number_of_museums)
     df = pd.DataFrame()
     for id in my_list:
         count = random.randint(1,3)

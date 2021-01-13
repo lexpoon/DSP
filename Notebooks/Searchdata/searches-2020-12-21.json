@@ -1,0 +1,3410 @@
+{
+    "reports": [
+        {
+            "columnHeader": {
+                "dimensions": [
+                    "ga:dimension2",
+                    "ga:dimension3",
+                    "ga:dateHourMinute",
+                    "ga:searchKeyword",
+                    "ga:searchCategory"
+                ],
+                "metricHeader": {
+                    "metricHeaderEntries": [
+                        {
+                            "name": "ga:searchResultViews",
+                            "type": "INTEGER"
+                        }
+                    ]
+                }
+            },
+            "data": {
+                "rows": [
+                    {
+                        "dimensions": [
+                            "9100155318904920655.",
+                            "1608541200580.ldhvkpmc",
+                            "202012210959",
+                            "opzeggen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "2"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0685350.5802811166564",
+                            "1608582904412.9ywpgymc",
+                            "202012212133",
+                            "Rotterdam",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0685350.5802811166564",
+                            "1608582904412.9ywpgymc",
+                            "202012212134",
+                            "Amsterdam",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0685350.5802811166564",
+                            "1608582904412.9ywpgymc",
+                            "202012212134",
+                            "Anne Frank",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0685350.5802811166564",
+                            "1608582904412.9ywpgymc",
+                            "202012212135",
+                            "Anne Frank",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "6652630091.4085882041",
+                            "1608543308812.dje30ik8",
+                            "202012211034",
+                            "Hellevoetsluis",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "14.021302245617030043",
+                            "1608538098519.pli5b9lm",
+                            "202012210905",
+                            "den haag",
+                            "see-and-do-events"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "14.021302245617030043",
+                            "1608538098519.pli5b9lm",
+                            "202012210905",
+                            "Gemeentemuseum den haag",
+                            "see-and-do-events"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "3.0699614536494870010",
+                            "1608561307697.mme4eoaa",
+                            "202012211523",
+                            "Telefoonnummer",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "2"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "15813595.001826106010",
+                            "1608591130217.49va2ba",
+                            "202012212351",
+                            "Cadeau",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "7059532113.8121071760",
+                            "1608571251815.uoab36z9",
+                            "202012211820",
+                            "Memory",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "3247.4777131618227510",
+                            "1608541966590.wgf55x4f",
+                            "202012211012",
+                            "eindhoven",
+                            "see-and-do-events"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "78160817886813.571801",
+                            "1608571940244.a4ny2y3",
+                            "202012211831",
+                            "Opzeggen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "83405091881971356.056",
+                            "1608582484153.pkwbvaow",
+                            "202012212126",
+                            "Nedelands Pluimveemuseum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "83405091881971356.056",
+                            "1608582484153.pkwbvaow",
+                            "202012212126",
+                            "Pluimveemuseum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "83405091881971356.056",
+                            "1608582484153.pkwbvaow",
+                            "202012212127",
+                            "Barneveld",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "62891820565411561.823",
+                            "1608538826651.wz0xukxh",
+                            "202012210916",
+                            "Groningen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "52830303011418.056260",
+                            "1608536516928.qeouvnhb",
+                            "202012210840",
+                            "Musea zutohen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "52830303011418.056260",
+                            "1608536516928.qeouvnhb",
+                            "202012210840",
+                            "Musea zutphen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "15.274766824201801610",
+                            "1608542501952.9f9i72k7",
+                            "202012211018",
+                            "museumjaarkaart cadeau doen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "5659.1182840331549250",
+                            "1608552007717.c8850lul",
+                            "202012211259",
+                            "opzeggen wegens overlijden",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "6312306413334134103.0",
+                            "1608557491851.zbzqe9oo",
+                            "202012211431",
+                            "registreren",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "6312306413334134103.0",
+                            "1608557922889.ktzboz9a",
+                            "202012211438",
+                            "registreren",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "3617348853.011806003",
+                            "1608541674345.kq1qlhvp",
+                            "202012211007",
+                            "rijksmuseum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "4133005170.259866368",
+                            "1608530660702.f68oq658",
+                            "202012210703",
+                            "Rijksmuseum",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "497681065044487416.49",
+                            "1608564545091.z61qtj2",
+                            "202012211627",
+                            "thuis",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "497681065044487416.49",
+                            "1608564545091.z61qtj2",
+                            "202012211629",
+                            "thuismuseum",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1847066332876.0641004",
+                            "1608578790465.9tgntk0r",
+                            "202012212026",
+                            "aftrekbaar",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1847066332876.0641004",
+                            "1608578790465.9tgntk0r",
+                            "202012212026",
+                            "anbi",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "89061085121.594037461",
+                            "1608576159733.2kjx80fa",
+                            "202012211942",
+                            "OPZEGGEN",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "8229506014.5432187344",
+                            "1608542835159.oopscwr8",
+                            "202012211026",
+                            "opzggen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "8229506014.5432187344",
+                            "1608542835159.oopscwr8",
+                            "202012211027",
+                            "opzeggen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "110189093064921450.35",
+                            "1608555803870.e6ebz9c",
+                            "202012211401",
+                            "naturalis",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1100871935869.4580755",
+                            "1608555975907.i52lm1q",
+                            "202012211403",
+                            "Corona",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "641579.60254082125601",
+                            "1608564757950.74h2fci",
+                            "202012211627",
+                            "Naturalis",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "641579.60254082125601",
+                            "1608564757950.74h2fci",
+                            "202012211628",
+                            "Corpus",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "641579.60254082125601",
+                            "1608564757950.74h2fci",
+                            "202012211628",
+                            "Naturalis",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "14415891638465071.218",
+                            "1608583790109.r2v9qbs",
+                            "202012212149",
+                            "cafe terrace",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "135401157477697401.45",
+                            "1608540859221.nothe5wc",
+                            "202012210954",
+                            "Naturalis",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "135401157477697401.45",
+                            "1608564455737.w4kohib",
+                            "202012211627",
+                            "Naturalis",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "6556.2454410796888115",
+                            "1608548580979.ar6dhfsoj",
+                            "202012211203",
+                            "Voorlinden",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "18711015980680540.655",
+                            "1608566549524.36w1vjug",
+                            "202012211652",
+                            "artis",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "18711015980680540.655",
+                            "1608566549524.36w1vjug",
+                            "202012211653",
+                            "amsterdam",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211251",
+                            "Harlingen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211251",
+                            "Joure",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211251",
+                            "Orvelte",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211252",
+                            "Almelo",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211252",
+                            "Groninger",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211253",
+                            "Delfzijl",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211253",
+                            "Dokkum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211253",
+                            "Drachten",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211254",
+                            "Hindeloopen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211254",
+                            "Vledder",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211255",
+                            "Staphorst",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211255",
+                            "Stapvoets",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211256",
+                            "Coevorden",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211256",
+                            "Vlecht",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211256",
+                            "Wemme",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211257",
+                            "Heerenveen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211257",
+                            "Ommen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211258",
+                            "Franeker",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211259",
+                            "Grafisch",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211259",
+                            "Leeuwarden",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211300",
+                            "Eelde",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "2"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "451697.36805206167911",
+                            "1608552065175.b4sm4xjp",
+                            "202012211300",
+                            "Harkema",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "95588671540891067.772",
+                            "1608573127420.3wrrcsxs",
+                            "202012211850",
+                            "Assen",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "88.880400611150056133",
+                            "1608564339671.yy4q6x2k",
+                            "202012211625",
+                            "Museum rotterdam",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "96685169980112310731.",
+                            "1608538142414.ioxeu4k",
+                            "202012210906",
+                            "Scheepvaart museum",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "96685169980112310731.",
+                            "1608538142414.ioxeu4k",
+                            "202012210908",
+                            "Scheepvaart museum",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "2"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "42026187595508367.315",
+                            "1608553602075.6gua4pw",
+                            "202012211326",
+                            "Opzeggen museumjaarkaart",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "81039105.215412306683",
+                            "1608539223145.75coiiq",
+                            "202012210927",
+                            "amsterdam",
+                            "see-and-do-events"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "175314110690656.06901",
+                            "1608563295737.jzjmj8w",
+                            "202012211607",
+                            "gogh",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "646136525.11662700687",
+                            "1608570809404.1ppfjp2f",
+                            "202012211812",
+                            "maastricht",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "646136525.11662700687",
+                            "1608570809404.1ppfjp2f",
+                            "202012211813",
+                            "maastricht",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1705816698.1706867605",
+                            "1608589191448.6bn7ygug",
+                            "202012212312",
+                            "Middelburg",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1705816698.1706867605",
+                            "1608589191448.6bn7ygug",
+                            "202012212315",
+                            "Middelburg",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1705816698.1706867605",
+                            "1608589191448.6bn7ygug",
+                            "202012212317",
+                            "Middelburg",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1705816698.1706867605",
+                            "1608589191448.6bn7ygug",
+                            "202012212318",
+                            "Middelburg",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "6.811101652873752065",
+                            "1608583674402.tmqehnmc",
+                            "202012212147",
+                            "Memory",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "45290092861811662.607",
+                            "1608586291966.wc0jz4w9",
+                            "202012212231",
+                            "R",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "04340631568116368.875",
+                            "1608554331042.5ztgmjz",
+                            "202012211335",
+                            "utrecht",
+                            "see-and-do-events"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "04340631568116368.875",
+                            "1608554331042.5ztgmjz",
+                            "202012211335",
+                            "utrecht",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "500516010999.11074687",
+                            "1608590465685.lrw6617j",
+                            "202012212336",
+                            "douane museum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "930568880700.9501681",
+                            "1608530999513.1fkp1u5e",
+                            "202012210709",
+                            "Teylers",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "31571791684313.935108",
+                            "1608591894331.mclw4c3m",
+                            "202012212358",
+                            "Museazutphen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "31571791684313.935108",
+                            "1608591894331.mclw4c3m",
+                            "202012212359",
+                            "Museazutphen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "169108529107.14863445",
+                            "1608549175707.tsz17kyb",
+                            "202012211212",
+                            "Invalide",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "169108529107.14863445",
+                            "1608549175707.tsz17kyb",
+                            "202012211212",
+                            "Rolstoel",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "46552728581766429410.",
+                            "1608575880349.o6doekab",
+                            "202012211932",
+                            "memoryspel",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "46552728581766429410.",
+                            "1608575880349.o6doekab",
+                            "202012211934",
+                            "memoryspel",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1131583.8935302908665",
+                            "1608569655927.uw0v2js",
+                            "202012211754",
+                            "groenenveld",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "21350460518899.089566",
+                            "1608559537578.w5ijwtti",
+                            "202012211505",
+                            "Rijksmuseum",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "054699.68115990554151",
+                            "1608560363812.27pegr7b",
+                            "202012211512",
+                            "museum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "054699.68115990554151",
+                            "1608560363812.27pegr7b",
+                            "202012211519",
+                            "museum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "2"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "5469001092514872.8324",
+                            "1608555875111.m3sbhsj",
+                            "202012211352",
+                            "virtuele tour",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "5469001092514872.8324",
+                            "1608555875111.m3sbhsj",
+                            "202012211353",
+                            "virtuele tour, speurtocht",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "5469001092514872.8324",
+                            "1608555875111.m3sbhsj",
+                            "202012211359",
+                            "speurtocht",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "5469001092514872.8324",
+                            "1608555875111.m3sbhsj",
+                            "202012211400",
+                            "speurtocht dikke hertog",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "7081858108836452986.",
+                            "1608576917860.7s8jm8ll",
+                            "202012211955",
+                            "Henriette polak",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0214170.3902712056861",
+                            "1608514445037.qae1fwhr",
+                            "202012210233",
+                            "Oudheden",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0214170.3902712056861",
+                            "1608514445037.qae1fwhr",
+                            "202012210233",
+                            "Tropen",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0214170.3902712056861",
+                            "1608514445037.qae1fwhr",
+                            "202012210234",
+                            "Ballet",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0214170.3902712056861",
+                            "1608514445037.qae1fwhr",
+                            "202012210234",
+                            "Dans",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "606.29784062441068308",
+                            "1608540310618.kal3a9b",
+                            "202012210945",
+                            "Sted",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "13775536172.086587560",
+                            "1608568756242.ygyeug9n",
+                            "202012211739",
+                            "Wachtwoord",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0660055042.5119627350",
+                            "1608549121389.wpn83r8m",
+                            "202012211155",
+                            "fashion",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0660055042.5119627350",
+                            "1608549121389.wpn83r8m",
+                            "202012211155",
+                            "Forum Groningen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0660055042.5119627350",
+                            "1608549121389.wpn83r8m",
+                            "202012211204",
+                            "nemo",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0660055042.5119627350",
+                            "1608549121389.wpn83r8m",
+                            "202012211206",
+                            "loeve",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0660055042.5119627350",
+                            "1608549121389.wpn83r8m",
+                            "202012211211",
+                            "helmond",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "16048.822163647189575",
+                            "1608505679190.i4ghq1ma",
+                            "202012210008",
+                            "Arnhem",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "50292821208836.52701",
+                            "1608505861302.wvlecm8",
+                            "202012210007",
+                            "Rotterdam",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "50292821208836.52701",
+                            "1608505861302.wvlecm8",
+                            "202012210008",
+                            "Rotterdam",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "50292821208836.52701",
+                            "1608505861302.wvlecm8",
+                            "202012210009",
+                            "Kroller",
+                            "see-and-do-events"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "50292821208836.52701",
+                            "1608505861302.wvlecm8",
+                            "202012210009",
+                            "Kroller",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "50292821208836.52701",
+                            "1608505861302.wvlecm8",
+                            "202012210010",
+                            "Kroller",
+                            "see-and-do-events"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "50292821208836.52701",
+                            "1608505861302.wvlecm8",
+                            "202012210010",
+                            "Kroller",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "50292821208836.52701",
+                            "1608505861302.wvlecm8",
+                            "202012210010",
+                            "Nijntje",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "2"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "12324588613789550.57",
+                            "1608571478688.c8iixxw",
+                            "202012211821",
+                            "Cadeau",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "791187411548026.7616",
+                            "1608579061386.99wi8cwb",
+                            "202012212030",
+                            "eindhoven",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "88608251171.90698496",
+                            "1608587102818.cgu10aa",
+                            "202012212243",
+                            "Zeist",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "88608251171.90698496",
+                            "1608587102818.cgu10aa",
+                            "202012212244",
+                            "Utrecht",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "2"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "60195.1318358514503",
+                            "1608591205749.ld7yoo6l",
+                            "202012212352",
+                            "Vast in de tijd",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "88266095137.71006957",
+                            "1608587675159.2ez6y93e",
+                            "202012212253",
+                            "Corpus",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "88266095137.71006957",
+                            "1608587675159.2ez6y93e",
+                            "202012212253",
+                            "Oudheden",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "88266095137.71006957",
+                            "1608587675159.2ez6y93e",
+                            "202012212254",
+                            "Oudheden",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "88266095137.71006957",
+                            "1608588155515.7xvpe3nw3",
+                            "202012212259",
+                            "Gelderland",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "00095831367364.41210",
+                            "1608568738926.rgoz5ala",
+                            "202012211703",
+                            "Zwolle",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "707.4363238165278740",
+                            "1608548089149.6sgbp83b",
+                            "202012211149",
+                            "kids kaart",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "707.4363238165278740",
+                            "1608548089149.6sgbp83b",
+                            "202012211150",
+                            "kinderen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "707.4363238165278740",
+                            "1608548089149.6sgbp83b",
+                            "202012211151",
+                            "kinderen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "707.4363238165278740",
+                            "1608548089149.6sgbp83b",
+                            "202012211151",
+                            "kinderen leeftijd betalen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "707.4363238165278740",
+                            "1608548089149.6sgbp83b",
+                            "202012211154",
+                            "klantenservice telefoonnummer",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "5331.80904783774673",
+                            "1608534367471.gus59dz1",
+                            "202012210806",
+                            "Sex",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "6354694013418070.447",
+                            "1608557884228.qwf7zgrp",
+                            "202012211437",
+                            "dordrechts museum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "566702134067.3902883",
+                            "1608567426044.f3vyx7p",
+                            "202012211717",
+                            "Leiden",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "620418501765381.6363",
+                            "1608563319008.q91x0xc",
+                            "202012211607",
+                            "leiden",
+                            "see-and-do-events"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "620418501765381.6363",
+                            "1608563319008.q91x0xc",
+                            "202012211607",
+                            "leiden vilt",
+                            "see-and-do-events"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "386841834687353108.8",
+                            "1608536619169.8f2tvq4",
+                            "202012210841",
+                            "Gelderland",
+                            "see-and-do-events"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "532061879480810.2726",
+                            "1608542921614.vdco4lme",
+                            "202012211028",
+                            "KM21",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "86109080656854119.16",
+                            "1608581670900.428q31qr",
+                            "202012212113",
+                            "Voorlinde",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "86109080656854119.16",
+                            "1608581670900.428q31qr",
+                            "202012212114",
+                            "Wassenaar",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "6141416001485254655.",
+                            "1608564566747.r3xbim7i",
+                            "202012211628",
+                            "overlijden",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "569313.4046411551138",
+                            "1608541391586.oc314njo",
+                            "202012211002",
+                            "speelklok",
+                            "see-and-do-events"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "569313.4046411551138",
+                            "1608541391586.oc314njo",
+                            "202012211003",
+                            "museum speelklok",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "239.6832206155745045",
+                            "1608546004405.vtu3cwp",
+                            "202012211119",
+                            "anbi",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0910345651689088.416",
+                            "1608547117403.in43l0qh",
+                            "202012211136",
+                            "amsterdam",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "4661158905164.540099",
+                            "1608590148234.fpws4d8",
+                            "202012212330",
+                            "Ardeco museum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "3060325.198552684098",
+                            "1608559640597.dbhok0cv",
+                            "202012211505",
+                            "rijksmuseum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "3060325.198552684098",
+                            "1608559640597.dbhok0cv",
+                            "202012211505",
+                            "rijksmuseum Amsterdam",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "95630715.29215180082",
+                            "1608558831069.4dfzq5h4",
+                            "202012211457",
+                            "gebruiksvoorwaarden",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1448248.110665665731",
+                            "1608576488134.u9cff1f",
+                            "202012211942",
+                            "arnhem",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1448248.110665665731",
+                            "1608576488134.u9cff1f",
+                            "202012211942",
+                            "zwolle",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "2"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1448248.110665665731",
+                            "1608576488134.u9cff1f",
+                            "202012211943",
+                            "heerenveen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1448248.110665665731",
+                            "1608576488134.u9cff1f",
+                            "202012211944",
+                            "leiden",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1448248.110665665731",
+                            "1608576488134.u9cff1f",
+                            "202012211945",
+                            "leiden",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1448248.110665665731",
+                            "1608576488134.u9cff1f",
+                            "202012211945",
+                            "natuurhistorisch",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1448248.110665665731",
+                            "1608576488134.u9cff1f",
+                            "202012211946",
+                            "leeuwarden",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1448248.110665665731",
+                            "1608576488134.u9cff1f",
+                            "202012211947",
+                            "heerenveen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "1448248.110665665731",
+                            "1608576488134.u9cff1f",
+                            "202012211947",
+                            "leeuwarden",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "362556636.3061041582",
+                            "1608564040120.80td90d5",
+                            "202012211620",
+                            "Pampus",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "582177184865205.3551",
+                            "1608576015706.dwy34h0s",
+                            "202012211938",
+                            "Kerst",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "582177184865205.3551",
+                            "1608576015706.dwy34h0s",
+                            "202012211939",
+                            "Kerstbal",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "3"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "582177184865205.3551",
+                            "1608576015706.dwy34h0s",
+                            "202012211939",
+                            "Kerstvakantie",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "582177184865205.3551",
+                            "1608576015706.dwy34h0s",
+                            "202012211940",
+                            "Kerst",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "87251.55083277267420",
+                            "1608577908052.k1m4zjjh",
+                            "202012212011",
+                            "Registreren",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0601624708170.106906",
+                            "1608563694655.s88358hi",
+                            "202012211613",
+                            "Verhuizing doorgeven",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            ".6944326810441127580",
+                            "1608542806244.8japdr7e",
+                            "202012211025",
+                            "rijks",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            ".6944326810441127580",
+                            "1608542806244.8japdr7e",
+                            "202012211025",
+                            "rijksmuseum",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            ".6944326810441127580",
+                            "1608542806244.8japdr7e",
+                            "202012211025",
+                            "rijksmuseum amsterdam",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "60419.63110802880612",
+                            "1608550545245.8o4w18c1",
+                            "202012211235",
+                            "hermitage",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "38395767.89688072016",
+                            "1608533824516.ccgw8wim",
+                            "202012210757",
+                            "neeltje",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "4830245110996496895.",
+                            "1608549263682.ja7n42l",
+                            "202012211214",
+                            "contact",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "53091.56358862546650",
+                            "1608554873802.i5728ypk",
+                            "202012211347",
+                            "cadeau",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "53091.56358862546650",
+                            "1608556087312.m8jsfmg1",
+                            "202012211356",
+                            "cadeau",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "2514662888179.85120",
+                            "1608548244492.gm7zg9t",
+                            "202012211157",
+                            "stedelijk museum breda",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "11656686240146.58385",
+                            "1608548680452.s1b6az0h",
+                            "202012211203",
+                            "hilversum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "7049537651.591986086",
+                            "1608584859418.2uljp9am9",
+                            "202012212205",
+                            "Muzieum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "7049537651.591986086",
+                            "1608584859418.2uljp9am9",
+                            "202012212205",
+                            "Nijmegen",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "7049537651.591986086",
+                            "1608584859418.2uljp9am9",
+                            "202012212207",
+                            "Nijmegen",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "797761582740160.7366",
+                            "1608553978215.za98f2qj",
+                            "202012211329",
+                            "glasmuseum",
+                            "see-and-do-events"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "797761582740160.7366",
+                            "1608553978215.za98f2qj",
+                            "202012211330",
+                            "bevrijdingsmuseum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "797761582740160.7366",
+                            "1608553978215.za98f2qj",
+                            "202012211330",
+                            "glasmuseum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "2"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "797761582740160.7366",
+                            "1608553978215.za98f2qj",
+                            "202012211331",
+                            "nationaal bevrijdingsmuseum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "797761582740160.7366",
+                            "1608553978215.za98f2qj",
+                            "202012211332",
+                            "groesbeek",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "2"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "2.221693378065746115",
+                            "1608532274988.h4eya4yl",
+                            "202012210729",
+                            "Utrecht",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "2.221693378065746115",
+                            "1608566260131.ici9dzb",
+                            "202012211657",
+                            "Utrecht",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "963804287.6129235011",
+                            "1608551440751.or1kwx5",
+                            "202012211250",
+                            "Contact",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "2"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "4661961026312833067.",
+                            "1608551352949.v8n1wqh",
+                            "202012211247",
+                            "arnhem",
+                            "see-and-do-events"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "4661961026312833067.",
+                            "1608551352949.v8n1wqh",
+                            "202012211247",
+                            "gelderland",
+                            "see-and-do-events"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "4661961026312833067.",
+                            "1608552626517.il7dezj8",
+                            "202012211250",
+                            "arnhem",
+                            "see-and-do-events"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "4661961026312833067.",
+                            "1608552626517.il7dezj8",
+                            "202012211253",
+                            "noordwijk",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "652266728173619.067",
+                            "1608562421129.mray9bom",
+                            "202012211538",
+                            "bonnefante",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "652266728173619.067",
+                            "1608562421129.mray9bom",
+                            "202012211538",
+                            "bonnefantemuseum",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0210248697.160885041",
+                            "1608509942487.roiusty2",
+                            "202012210116",
+                            "Maurits",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "0210248697.160885041",
+                            "1608509942487.roiusty2",
+                            "202012210116",
+                            "Mauritshuis",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "9125978651288002098.",
+                            "1608579185476.j0uilfc",
+                            "202012212032",
+                            "Nemo",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "9125978651288002098.",
+                            "1608579185476.j0uilfc",
+                            "202012212033",
+                            "Naturalis",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "03641.16383335532685",
+                            "1608551969173.cpgc2keg",
+                            "202012211252",
+                            "Contact",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "2.373311891486060481",
+                            "1608566479404.c679m39o",
+                            "202012211700",
+                            "Louwman",
+                            "see-and-do-museums"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "989055598210682337.6",
+                            "1608553929411.acs3t3d",
+                            "202012211329",
+                            "Opzeggen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "989055598210682337.6",
+                            "1608553975334.vlibvh2p",
+                            "202012211332",
+                            "Opzeggen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "9887555057028.106654",
+                            "1608547631484.fv3kwba9",
+                            "202012211146",
+                            "basiliek",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "9887555057028.106654",
+                            "1608547631484.fv3kwba9",
+                            "202012211146",
+                            "kerk",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "9887555057028.106654",
+                            "1608547631484.fv3kwba9",
+                            "202012211146",
+                            "maastricht",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "9887555057028.106654",
+                            "1608547631484.fv3kwba9",
+                            "202012211147",
+                            "zwolle",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "5.186011684169585871",
+                            "1608558226859.k5hbvqno",
+                            "202012211443",
+                            "Opzeggen",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "567557070618989031.1",
+                            "1608534407400.o54h63us",
+                            "202012210805",
+                            "Rijksmuseum",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "776000.3148556698860",
+                            "1608550943799.8bv6nfhi",
+                            "202012211241",
+                            "Virtuele bezoek Stedelijk Museum Amsterdam",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "dimensions": [
+                            "884631209626484018.5",
+                            "1608548376978.lukovwjc",
+                            "202012211159",
+                            "Carnavalsmuseum oosterhout",
+                            "site-search"
+                        ],
+                        "metrics": [
+                            {
+                                "values": [
+                                    "1"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "totals": [
+                    {
+                        "values": [
+                            "223"
+                        ]
+                    }
+                ],
+                "rowCount": 210,
+                "minimums": [
+                    {
+                        "values": [
+                            "1"
+                        ]
+                    }
+                ],
+                "maximums": [
+                    {
+                        "values": [
+                            "3"
+                        ]
+                    }
+                ],
+                "isDataGolden": true
+            }
+        }
+    ]
+}
