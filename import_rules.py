@@ -128,8 +128,7 @@ def create_row_vectors(row):
 
     vector[index] = 1
     return vector
-def return_vector(df):
-    return df
+
 # Create the dataframe from the museum file and so some cleaning
 filename = 'musea.csv'
 df = create_dataframe(filename)
