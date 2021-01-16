@@ -91,7 +91,11 @@ def create_lists(df, x, addition):
     myarray += 1
     return myarray
 
+def create_rules_overview_df(df_r):
+    df.drop(['Visitors', 'index', 'facilities', 'vector'], axis=1, inplace=True)
+    print(df_r)
 
+    return df_r
 def create_row_vectors(row):
 
     index = row['index']
@@ -146,10 +150,10 @@ df = df.fillna(0)
 df[['bieb', 'openair', 'parking', 'weelchair', 'disabled', 'trainstation', 'restaurant']] = False
 # For every facility add the increase/weight/update value which will be converted to the update arrays
 df = df.apply(create_true_falses_multiplication, axis=1)
-df.drop(columns='publicName_y')
+df.drop(columns='publicName_y', inplace=True)
 df.rename(columns={'publicName_x': "publicName"}, inplace=True)
 
-df.to_csv('rules_overview.csv')
+
 # Create the update arrays for all the facilities
 bieb_array = create_lists(df, 'bieb', 2)
 openair_array = create_lists(df, 'openair', 3)
@@ -166,10 +170,12 @@ nature_array = create_lists(df, 'Nature', 3)
 tech_array = create_lists(df, 'Tech', 3)
 ethnology_array = create_lists(df, 'Ethnology', 3)
 
-print(df)
 df['vector'] = df.apply(create_row_vectors, axis=1)
 
 print(df['vector'].head(n=50))
 vector_df = df[['translationSetId', 'vector']]
 
 vector_df.to_csv('vector_csv.csv')
+
+df_rules_overview = create_rules_overview_df(df)
+df_rules_overview.to_csv('rules_overview.csv')
