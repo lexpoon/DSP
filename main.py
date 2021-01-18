@@ -76,27 +76,17 @@ def update_vectors(new, old, count):
     new_array = np.transpose(myarray)
     myarray = old*new_array
     return myarray
-def make_dict_with_list(mydict, mylist):
 
-    for x in mylist:
-        mydict.append(x)
-    return mydict
-
-def prepare_excel_file(mylist):
-
+def prepare_excel_file(mydict):
     with ExcelWriter("validation_excel.xlsx") as writer:
-        for x in mylist:
-            x.to_excel(writer, sheet_name='Sheet1')
-    path =
-    writer = pd.ExcelWriter(path, engine = 'xlsxwriter')
-    return writer
+        for k, v in mydict.items():
+            v.to_excel(writer, sheet_name=k)
 
-def create_excel_sheet(client, row, writer):
-    museum_list = row['museum_list'].values[0]
+def create_excel_sheet(row):
+    museum_list = row['museum_id'].values[0]
     features = row['features'].values[0]
-    print(features, features[0])
     df = create_validation(museum_list, features)
-    df.to_excel(writer, sheet_name =client)
+    return df
 
 def create_statistical(df, museum_list, features, museum_dict, feature_dict):
     # deze totals gebruiken bij het delen van de sums/counts per musea/feature. Hiermee krijg je precision/recall/accuracy
@@ -114,8 +104,9 @@ def create_statistical(df, museum_list, features, museum_dict, feature_dict):
         museum_dict[museum] = number + museum_dict.get(museum)
 
 
-
 def create_validation(museum_list, features):
+    print('museums:', museum_list)
+    print('features:', features )
     new_df = df_rules_overview['translationSetId']
     new_df = new_df.to_frame()
     for feature in features:
@@ -139,7 +130,7 @@ def run_all_validation():
     for index, row in input_df.iterrows():
         client = row['clientid']
         museum = row['translationSetId']
-        
+
         ''' MOET NOG WAT DOEN MET DE COUNT VAN HIERONDER - VERWERKEN IN VECTOR MULTIPLICATION'''
         count = row['count']
 
@@ -174,12 +165,15 @@ def run_all_validation():
         features = row['features']
         result_df = create_validation(museum_list, features)
         create_statistical(result_df, museum_list, features, museum_validation_dict, feature_validation_dict)
-    writer = prepare_excel_file()
+
     clients_for_excel = (random.choices(client_id_list,k=10))
+    dataframe_dict = {}
     for client_x in clients_for_excel:
         row = df_total[(df_total['clientid'] == client_x)]
-        create_excel_sheet(client_x, row, writer)
-
+        temp_df = create_excel_sheet(row)
+        print(temp_df)
+        dataframe_dict[client_x] = temp_df
+        prepare_excel_file(dataframe_dict)
 
     df_total.to_csv('result_client_museums.csv')
 
@@ -214,4 +208,3 @@ def run_all_train():
 
 # run_all_train()
 run_all_validation()
-print(df_rules_overview.info())
