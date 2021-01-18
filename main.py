@@ -8,6 +8,8 @@ from datetime import date, datetime
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from pandas import ExcelWriter
+
 fileDir = os.path.dirname(os.path.realpath('__file__'))
 currentdate = date.today().strftime('%Y.%m.%d')
 # currentdate = '2019.04.02'
@@ -31,6 +33,7 @@ all_features_list = feature_df['Name'].to_list()
 
 df_x = pd.read_csv(f"{fileDir}/musea.csv", header=0)
 museum_df = df_x[['translationSetId','publicName']]
+museum_df = museum_df.drop_duplicates(subset=['publicName'])
 museum_df = museum_df.sort_values('translationSetId')
 museum_df = museum_df.reset_index(drop=True)
 all_museums_list = museum_df['translationSetId'].to_list()
@@ -78,41 +81,55 @@ def make_dict_with_list(mydict, mylist):
     for x in mylist:
         mydict.append(x)
     return mydict
-def create_excel_sheet(client, museum_list, features):
-    '''
-    df = museum dataframe met alle onehot yes/no columns
-    maak nieuwe df met alleen de columns die in de feature list staan
-    dan misschien nog wat counts toevoegen
-    '''
-    pass
 
-def create_validation(client, museum_list, features, feature_dict, museum_dict):
+def prepare_excel_file(mylist):
 
+    with ExcelWriter("validation_excel.xlsx") as writer:
+        for x in mylist:
+            x.to_excel(writer, sheet_name='Sheet1')
+    path =
+    writer = pd.ExcelWriter(path, engine = 'xlsxwriter')
+    return writer
+
+def create_excel_sheet(client, row, writer):
+    museum_list = row['museum_list'].values[0]
+    features = row['features'].values[0]
+    print(features, features[0])
+    df = create_validation(museum_list, features)
+    df.to_excel(writer, sheet_name =client)
+
+def create_statistical(df, museum_list, features, museum_dict, feature_dict):
     # deze totals gebruiken bij het delen van de sums/counts per musea/feature. Hiermee krijg je precision/recall/accuracy
     museum_total = len(museum_list)
     feature_total = len(features)
-    print(df_rules_overview.info())
+    feature_row = df.iloc[-1]
+
+    for feature in features:
+        data = int(feature_row[f'{feature}'])
+        feature_dict[feature] = data + feature_dict.get(feature)
+
+    for museum in museum_list:
+        data = df.loc[df['translationSetId'] == museum]
+        number = int(data['museum total'].values[0])
+        museum_dict[museum] = number + museum_dict.get(museum)
+
+
+
+def create_validation(museum_list, features):
     new_df = df_rules_overview['translationSetId']
     new_df = new_df.to_frame()
-    print(features)
-
-    # features = literal_eval(features[1])
-    # print(features[1])
     for feature in features:
         correct_column = df_rules_overview[f'{feature}']
         new_df[f'{feature}'] = correct_column
-    print(new_df)
-
     total_df_list = []
     for museum in museum_list:
         row = new_df.loc[(new_df['translationSetId'] == museum)]
         total_df_list.append(row)
     total_df = pd.concat(total_df_list)
-    print(total_df)
+    total_df.loc['feature total']= total_df.sum(numeric_only=True, axis=0)
+    total_df.loc[:,'museum total'] = total_df.sum(numeric_only=True, axis=1)
+    return total_df
 
-    create_excel_sheet()
-
-    ''' Toevoegen: '''
 def run_all_validation():
     client_vector_dict = {}
     client_features_dict = {}
@@ -149,22 +166,19 @@ def run_all_validation():
     df_total = df_vectors.merge(df_features, how='inner', on='clientid')
 
     print('\n\n\nFROM HERE--------------\n')
-    feature_validation_dict = dict.fromkeys(all_features_list)
-    museum_validation_dict = dict.fromkeys(all_museums_list)
+    museum_validation_dict = dict.fromkeys(all_museums_list, 0)
+    feature_validation_dict = dict.fromkeys(all_features_list, 0)
     for index, row in df_total.iterrows():
         client = row['clientid']
         museum_list = row['museum_id']
         features = row['features']
-        create_validation(client, museum_list, features, feature_validation_dict, museum_validation_dict)
-
-    # clients_for_excel = (random.choices(client_id_list,k=10))
-    # for client_x in clients_for_excel:
-    #
-    #     row = df_total[(df_total['clientid'] == client_x)]
-    #     client = row['clientid']
-    #     museum_list = row['museum_list']
-    #     features = row['features'].values
-    #     create_excel_sheet(client, museum_list, features)
+        result_df = create_validation(museum_list, features)
+        create_statistical(result_df, museum_list, features, museum_validation_dict, feature_validation_dict)
+    writer = prepare_excel_file()
+    clients_for_excel = (random.choices(client_id_list,k=10))
+    for client_x in clients_for_excel:
+        row = df_total[(df_total['clientid'] == client_x)]
+        create_excel_sheet(client_x, row, writer)
 
 
     df_total.to_csv('result_client_museums.csv')
