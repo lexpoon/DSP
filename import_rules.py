@@ -39,9 +39,9 @@ def create_true_falses_multiplication(row):
 
     # These are the vector updates based on the facilities column
     if 'MuseumLibrary' in data:
-        row['bieb'] = 1
+        row['library'] = 1
     else:
-        row['bieb'] = 0
+        row['library'] = 0
     if 'OpenAir' in data:
         row['openair'] = 1
     else:
@@ -101,8 +101,8 @@ def create_row_vectors(row):
     index = row['index']
     vector = np.zeros(496, dtype=object)
     vector += 1
-    if row['bieb'] != 0:
-        vector += bieb_array
+    if row['library'] != 0:
+        vector += library_array
     if row['openair'] != 0:
         vector += openair_array
     if row['parking'] != 0:
@@ -115,19 +115,19 @@ def create_row_vectors(row):
         vector += trainstation_array
     if row['restaurant'] != 0:
         vector += restaurant_array
-    if row['History'] != 0:
+    if row['history'] != 0:
         vector += history_array
-    if row['Visual'] != 0:
+    if row['visual'] != 0:
         vector += visual_array
-    if row['Culture'] != 0:
+    if row['culture'] != 0:
         vector += culture_array
-    if row['Naval'] != 0:
+    if row['naval'] != 0:
         vector += naval_array
-    if row['Nature'] != 0:
+    if row['nature'] != 0:
         vector += nature_array
-    if row['Tech'] != 0:
+    if row['tech'] != 0:
         vector += tech_array
-    if row['Ethnology'] != 0:
+    if row['ethnology'] != 0:
         vector += ethnology_array
 
     vector[index] = 1
@@ -147,7 +147,7 @@ df_visitor = create_dataframe('Notebooks/museua_visitors.csv')
 df = df.merge(df_visitor, how='left', left_on='translationSetId', right_on='translationSetId')
 df = df.fillna(0)
 # Add all the facilites as on its own columns
-df[['bieb', 'openair', 'parking', 'weelchair', 'disabled', 'trainstation', 'restaurant']] = False
+df[['library', 'openair', 'parking', 'weelchair', 'disabled', 'trainstation', 'restaurant']] = False
 # For every facility add the increase/weight/update value which will be converted to the update arrays
 df = df.apply(create_true_falses_multiplication, axis=1)
 df.drop(columns='publicName_y', inplace=True)
@@ -155,20 +155,20 @@ df.rename(columns={'publicName_x': "publicName"}, inplace=True)
 
 
 # Create the update arrays for all the facilities
-bieb_array = create_lists(df, 'bieb', 2)
+library_array = create_lists(df, 'library', 2)
 openair_array = create_lists(df, 'openair', 3)
 parking_array = create_lists(df, 'parking', 2)
 weelchair_array = create_lists(df, 'weelchair', 4)
 disabled_array = create_lists(df, 'disabled', 5)
 trainstation_array = create_lists(df, 'trainstation', 2)
 restaurant_array = create_lists(df, 'restaurant', 2)
-history_array = create_lists(df, 'History', 2)
-visual_array = create_lists(df, 'Visual', 2)
-culture_array = create_lists(df, 'Culture', 3)
-naval_array = create_lists(df, 'Naval', 3)
-nature_array = create_lists(df, 'Nature', 3)
-tech_array = create_lists(df, 'Tech', 3)
-ethnology_array = create_lists(df, 'Ethnology', 3)
+history_array = create_lists(df, 'history', 2)
+visual_array = create_lists(df, 'visual', 2)
+culture_array = create_lists(df, 'culture', 3)
+naval_array = create_lists(df, 'naval', 3)
+nature_array = create_lists(df, 'nature', 3)
+tech_array = create_lists(df, 'tech', 3)
+ethnology_array = create_lists(df, 'ethnology', 3)
 
 df['vector'] = df.apply(create_row_vectors, axis=1)
 
