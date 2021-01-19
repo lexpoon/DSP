@@ -12,13 +12,10 @@ fileDir = os.path.dirname(os.path.realpath('__file__'))
 currentdate = date.today().strftime('%Y.%m.%d')
 # currentdate = '2019.04.02'
 # Import our other files
-from recommendations import top_ten_random
 from ast import literal_eval
 from functools import reduce
 
 SYMBOLS = [' ', '/', '-', '&', ',', '\’','\‘', '\'', "'"]
-global user_id_list
-user_id_list = []
 
 rules_df = pd.read_csv('rules_overview.csv', header=0)
 feature_df = pd.read_csv('featurelist.csv')

@@ -86,6 +86,7 @@ def create_excel_sheet(row):
     museum_list = row['museum_id'].values[0]
     features = row['features'].values[0]
     df = create_validation(museum_list, features)
+
     return df
 
 def create_statistical(df, museum_list, features, museum_dict, feature_dict):
@@ -115,6 +116,10 @@ def create_validation(museum_list, features):
     total_df_list = []
     for museum in museum_list:
         row = new_df.loc[(new_df['translationSetId'] == museum)]
+        row['museumname'] = museum_df.loc[museum_df.translationSetId == museum]['publicName']
+        # row.drop(columns='', inplace=True)
+
+        # print(museum_df.loc[museum_df.translationSetId == museum])
         total_df_list.append(row)
     total_df = pd.concat(total_df_list)
     total_df.loc['feature total']= total_df.sum(numeric_only=True, axis=0)
@@ -128,6 +133,7 @@ def run_all_validation():
     input_df = get_dataframe()
 
     for index, row in input_df.iterrows():
+
         client = row['clientid']
         museum = row['translationSetId']
 
