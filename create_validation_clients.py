@@ -99,7 +99,7 @@ def create_new_client():
 
 def get_dataframe():
     frames = []
-    for i in range(10):
+    for i in range(100):
         temp_df = create_new_client()
         frames.append(temp_df)
     df = pd.concat(frames)
