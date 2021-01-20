@@ -16,12 +16,18 @@ currentdate = date.today().strftime('%Y.%m.%d')
 # Import our other files
 from recommendations import top_ten_random
 # from analytics import run_all_analytics
+print('joe')
+
 from create_validation_clients import get_dataframe
+print('joe')
+
 from import_rules import vector_df, df_rules_overview
+print('joe')
+
 SYMBOLS = [' ', '/', '-', '&', ',', '\’','\‘', '\'', "'"]
 global user_id_list
 user_id_list = []
-
+print('joe')
 # df_rules_overview = df_rules_overview.astype(int)
 # df_rules_overview.replace(1.0, value=1, inplace=True)
 # df_rules_overview.replace(0.0, value=0, inplace=True)
@@ -89,25 +95,32 @@ def create_excel_sheet(row):
 
     return df
 
-def create_statistical(df, museum_list, features, museum_dict, feature_dict):
-    # deze totals gebruiken bij het delen van de sums/counts per musea/feature. Hiermee krijg je precision/recall/accuracy
+def create_statistical(df, museum_list, features, feature_correct_dict, feature_wrong_dict):
     museum_total = len(museum_list)
     feature_total = len(features)
-    feature_row = df.iloc[-1]
 
+    correct_total = 0
     for feature in features:
-        data = int(feature_row[f'{feature}'])
-        feature_dict[feature] = data + feature_dict.get(feature)
+        data = df.loc['feature total', feature]
+        if len(features) == 1 and data >= 6:
+            # feature_dict[feature]['correct'] += 1
+            feature_correct_dict[feature] += 1
+            correct_total += 1
+        elif len(features) == 1 and data < 7:
+            # feature_dict[feature]['wrong'] += 1
+            feature_wrong_dict[feature] += 1
+        elif len(features) > 1 and data >= 4:
+            correct_total += 1
+            # feature_dict[feature]['correct'] += 1
+        else:
+            # feature_dict[feature]['wrong'] += 1
+            feature_wrong_dict[feature] += 1
 
-    for museum in museum_list:
-        data = df.loc[df['translationSetId'] == museum]
-        number = int(data['museum total'].values[0])
-        museum_dict[museum] = number + museum_dict.get(museum)
-
+        # print(feature_dict)
+    pass_fail = correct_total-feature_total
+    return pass_fail
 
 def create_validation(museum_list, features):
-    print('museums:', museum_list)
-    print('features:', features )
     new_df = df_rules_overview['translationSetId']
     new_df = new_df.to_frame()
     for feature in features:
@@ -116,20 +129,30 @@ def create_validation(museum_list, features):
     total_df_list = []
     for museum in museum_list:
         row = new_df.loc[(new_df['translationSetId'] == museum)]
-        row['museumname'] = museum_df.loc[museum_df.translationSetId == museum]['publicName']
-        # row.drop(columns='', inplace=True)
-
-        # print(museum_df.loc[museum_df.translationSetId == museum])
+        df_temp = pd.DataFrame()
+        df_temp['museumname'] = museum_df.loc[museum_df.translationSetId == museum]['publicName']
+        row.insert(1, 'museumname', df_temp['museumname'])
         total_df_list.append(row)
     total_df = pd.concat(total_df_list)
     total_df.loc['feature total']= total_df.sum(numeric_only=True, axis=0)
     total_df.loc[:,'museum total'] = total_df.sum(numeric_only=True, axis=1)
     return total_df
+def create_output_dataframes(correct_dict, incorrect_dict):
+    print(correct_dict)
+    combined_df = pd.DataFrame()
+    for k, v in correct_dict.items():
+        correct = v
+        wrong = incorrect_dict.get(k)
+        percentage = correct/(correct+wrong+1)
+        combined_df = combined_df.append({'feature': k, 'correct': correct, 'wrong':wrong , 'percentage': percentage}, ignore_index=True)
+
+    combined_df.to_csv('results validation.csv')
 
 def run_all_validation():
     client_vector_dict = {}
     client_features_dict = {}
     client_id_list = []
+    museum_count_dict = {}
     input_df = get_dataframe()
 
     for index, row in input_df.iterrows():
@@ -163,21 +186,34 @@ def run_all_validation():
     df_total = df_vectors.merge(df_features, how='inner', on='clientid')
 
     print('\n\n\nFROM HERE--------------\n')
-    museum_validation_dict = dict.fromkeys(all_museums_list, 0)
-    feature_validation_dict = dict.fromkeys(all_features_list, 0)
+
+    # museum_validation_dict = dict.fromkeys(all_museums_list, {'correct': 0, 'wrong': 0})
+    # feature_validation_dict = dict.fromkeys(all_features_list, {'correct': 0, 'wrong': 0})
+    feature_correct_dict = dict.fromkeys(all_features_list, 0)
+    feature_wrong_dict = dict.fromkeys(all_features_list, 0)
+
+    correct_wrong_list = []
     for index, row in df_total.iterrows():
-        client = row['clientid']
         museum_list = row['museum_id']
         features = row['features']
         result_df = create_validation(museum_list, features)
-        create_statistical(result_df, museum_list, features, museum_validation_dict, feature_validation_dict)
+        correct_wrong_list.append(create_statistical(result_df, museum_list, features, feature_correct_dict, feature_wrong_dict))
 
+
+
+    correct= correct_wrong_list.count(0)
+    wrong= len(correct_wrong_list)-correct
+    total = wrong + correct
+    print(f'Total correct recommendations: {correct}')
+    print(f'Total wrong recommendations: {wrong}')
+    print(f'Percentage correct: {correct/total}')
+
+    create_output_dataframes(feature_correct_dict, feature_wrong_dict)
     clients_for_excel = (random.choices(client_id_list,k=10))
     dataframe_dict = {}
     for client_x in clients_for_excel:
         row = df_total[(df_total['clientid'] == client_x)]
         temp_df = create_excel_sheet(row)
-        print(temp_df)
         dataframe_dict[client_x] = temp_df
         prepare_excel_file(dataframe_dict)
 
