@@ -48,7 +48,8 @@ def make_feature_named(feature):
     return full_name
 
 def choose_feature():
-    print('1. History\n2. Visual\n3. Culture\n4. Naval\n5. Tech\n6. Ethnology\n7. Library\n8. Openair\n9. Parking\n10. Weelchair\n11. Disabled\n12. Trainstation\n13. Restaurant\n')
+    # KLOPT NIETTTTT
+    print('1. LibraryHistory\n2. Visual\n3. Culture\n4. Naval\n5. Tech\n6. Ethnology\n7. Library\n8. Openair\n9. Parking\n10. Weelchair\n11. Disabled\n12. Trainstation\n13. Restaurant\n')
     feature = input('Choose a feature from the list above:\n')
     return feature
 
@@ -99,7 +100,7 @@ def create_new_client():
 
 def get_dataframe():
     frames = []
-    for i in range(100):
+    for i in range(5):
         temp_df = create_new_client()
         frames.append(temp_df)
     df = pd.concat(frames)

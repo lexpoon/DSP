@@ -110,8 +110,6 @@ def create_row_vectors(row):
         vector += trainstation_array
     if row['restaurant'] != 0:
         vector += restaurant_array
-    if row['history'] != 0:
-        vector += history_array
     if row['visual'] != 0:
         vector += visual_array
     if row['culture'] != 0:
@@ -146,35 +144,30 @@ def create_row_vectors(row):
         vector += cluster9_array
     if row['architectonic'] != 0:
         vector += architectonic_array
-    if row['specialplaces'] != 0:
-        vector += specialplaces_array
-    if row[''] != 0:
-        vector += cluster10_array
-    if row['cluster10'] != 0:
-        vector += cluster10_array
-    if row['cluster10'] != 0:
-        vector += cluster10_array
-    if row['cluster10'] != 0:
-        vector += cluster10_array
-    if row['cluster10'] != 0:
-        vector += cluster10_array
-    if row['cluster10'] != 0:
-        vector += cluster10_array
-    if row['cluster10'] != 0:
-        vector += cluster10_array
-    if row['cluster10'] != 0:
-        vector += cluster10_array
-    if row['cluster10'] != 0:
-        vector += cluster10_array
-    if row['cluster10'] != 0:
-        vector += cluster10_array
-    if row['cluster10'] != 0:
-        vector += cluster10_array
-    if row['cluster10'] != 0:
-        vector += cluster10_array
-
-
-
+    if row['educative'] != 0:
+        vector += educative_array
+    if row['historic_location'] != 0:
+        vector += historic_location_array
+    if row['historic_museum'] != 0:
+        vector += historic_museum_array
+    if row['castles'] != 0:
+        vector += castles_array
+    if row['churches'] != 0:
+        vector += churches_array
+    if row['children'] != 0:
+        vector += children_array
+    if row['art_galleries'] != 0:
+        vector += art_galleries_array
+    if row['art_museum'] != 0:
+        vector += art_museum_array
+    if row['military'] != 0:
+        vector += military_array
+    if row['audiotour'] != 0:
+        vector += audiotour_array
+    if row['exhibition'] != 0:
+        vector += exhibition_array
+    if row['lecture'] != 0:
+        vector += lecture_array
 
     # if row['amsterdam'] != 0:
     #     vector += amsterdam_array
@@ -205,7 +198,7 @@ def create_row_vectors(row):
     return vector
 
 # Create the dataframe from the museum file and so some cleaning
-filename = 'musea_new1.csv.csv'
+filename = 'musea.csv'
 df = create_dataframe(filename)
 df = df.drop_duplicates(subset=['publicName'])
 df.rename(columns={'Unnamed: 0': "index"}, inplace=True)
@@ -214,7 +207,7 @@ df = df.sort_values('translationSetId')
 df = df.reset_index(drop=True)
 
 # Import the extra categories from the visitor file
-df_visitor = create_dataframe('Notebooks/museua_visitors.csv')
+df_visitor = create_dataframe('musea_new2.csv')
 df = df.merge(df_visitor, how='left', left_on='translationSetId', right_on='translationSetId')
 df = df.fillna(0)
 # Add all the facilites as on its own columns
@@ -226,6 +219,7 @@ df.rename(columns={'publicName_x': "publicName"}, inplace=True)
 
 
 # Create the update arrays for all the facilities
+# Feature group 1: Facilities
 library_array = create_lists(df, 'library', 2)
 openair_array = create_lists(df, 'openair', 3)
 parking_array = create_lists(df, 'parking', 2)
@@ -233,14 +227,8 @@ weelchair_array = create_lists(df, 'weelchair', 4)
 disabled_array = create_lists(df, 'disabled', 5)
 trainstation_array = create_lists(df, 'trainstation', 2)
 restaurant_array = create_lists(df, 'restaurant', 2)
-history_array = create_lists(df, 'history', 2)
-visual_array = create_lists(df, 'visual', 2)
-culture_array = create_lists(df, 'culture', 3)
-naval_array = create_lists(df, 'naval', 3)
-nature_array = create_lists(df, 'nature', 3)
-tech_array = create_lists(df, 'tech', 3)
-ethnology_array = create_lists(df, 'ethnology', 3)
 
+# Feature group 2: Description subject
 cluster0_array = create_lists(df, 'cluster0', 3)
 cluster1_array = create_lists(df, 'cluster1', 3)
 cluster2_array = create_lists(df, 'cluster2', 3)
@@ -252,25 +240,40 @@ cluster7_array = create_lists(df, 'cluster7', 3)
 cluster8_array = create_lists(df, 'cluster8', 3)
 cluster9_array = create_lists(df, 'cluster9', 3)
 
-
+# Feature group 3: Museum
+visual_array = create_lists(df, 'visual', 2)
+culture_array = create_lists(df, 'culture', 3)
+naval_array = create_lists(df, 'naval', 3)
+nature_array = create_lists(df, 'nature', 3)
+tech_array = create_lists(df, 'tech', 3)
+ethnology_array = create_lists(df, 'ethnology', 3)
 architectonic_array = create_lists(df, 'architectonic', 3)
-# Deze hieronder houden? lijkt me beetje overdreven en niet veel vertellen over musea
-specialplaces_array = create_lists(df, 'specialplaces', 3)
 educative_array = create_lists(df, 'educative', 3)
+art_galleries_array = create_lists(df, 'art_galleries', 3)
+art_museum_array = create_lists(df, 'art_museum', 3)
 historic_location_array = create_lists(df, 'historic_location', 3)
 historic_museum_array = create_lists(df, 'historic_museum', 3)
 castles_array = create_lists(df, 'castles', 3)
 churches_array = create_lists(df, 'churches', 3)
-children = create_lists(df, 'children', 3)
-art_galleries_array = create_lists(df, 'art_galleries', 3)
-# Deze behouden of andere houden?
-art_museum_array = create_lists(df, 'art_museum', 3)
-military_array = create_lists(df, 'military', 3)
-# nature history museum category left out
-# What about the category below, does it help our recommendation?
-specialty_array = create_lists(df, 'specialty', 3)
+children_array = create_lists(df, 'children', 3)
 gardens_array = create_lists(df, 'gardens', 3)
 science_array = create_lists(df, 'science', 3)
+military_array = create_lists(df, 'military', 3)
+audiotour_array = create_lists(df, 'audiotour', 3)
+exhibition_array = create_lists(df, 'exhibition', 2)
+lecture_array = create_lists(df, 'lecture', 2)
+
+
+# # Deze hieronder houden? lijkt me beetje overdreven en niet veel vertellen over musea
+# specialplaces_array = create_lists(df, 'specialplaces', 3)
+# # nature history museum category left out
+# # What about the category below, does it help our recommendation?
+# specialty_array = create_lists(df, 'specialty', 3)
+# zero_four_array = create_lists(df, 'zero_four', 2)
+# five_eight_array = create_lists(df, 'five_eight', 2)
+# nine_twelve_array = create_lists(df, 'nine_twelve', 2)
+# activity_array = create_lists(df, 'activity', 2)
+
 
 # amsterdam_array = create_lists(df, 'amsterdam', 4)
 # utrecht_array = create_lists(df, 'utrecht', 5)
