@@ -27,6 +27,7 @@ print('joe')
 SYMBOLS = [' ', '/', '-', '&', ',', '\’','\‘', '\'', "'"]
 global user_id_list
 user_id_list = []
+
 print('joe')
 # df_rules_overview = df_rules_overview.astype(int)
 # df_rules_overview.replace(1.0, value=1, inplace=True)
@@ -58,7 +59,13 @@ def clean_column(df, column):
 
 ''' STANDAARD '''
 from ast import literal_eval
+def create_excel_list():
+    excel_client_list = []
+    with open('excel_clients.txt', 'r') as f:
+        for x in f:
+            clients_for_excel = x.split(';')
 
+    return clients_for_excel
 def convert_museumid_to_name(vector):
     ''' HIER MUSEUM DF UIT HALEN EN ERGENS BOVEN GLOBAL ERIN FIXEN'''
 
@@ -153,8 +160,8 @@ def run_all_validation():
     client_features_dict = {}
     client_id_list = []
     museum_count_dict = {}
-    input_df = get_dataframe()
-
+    input_df, clients_for_excel = get_dataframe()
+    print(clients_for_excel)
     for index, row in input_df.iterrows():
 
         client = row['clientid']
@@ -209,8 +216,9 @@ def run_all_validation():
     print(f'Percentage correct: {correct/total}')
 
     create_output_dataframes(feature_correct_dict, feature_wrong_dict)
-    clients_for_excel = (random.choices(client_id_list,k=10))
     dataframe_dict = {}
+
+    # clients_for_excel = get_clients()
     for client_x in clients_for_excel:
         row = df_total[(df_total['clientid'] == client_x)]
         temp_df = create_excel_sheet(row)

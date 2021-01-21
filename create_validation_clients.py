@@ -98,12 +98,11 @@ def get_random_museums(df, number_m, number_f):
 def create_excel_file_input(df):
     client_list = list(set(df['clientid'].to_list()))
     clients_for_excel = (random.choices(client_list,k=10))
-    print(len(set(client_list)), clients_for_excel)
     with ExcelWriter("input_excel.xlsx") as writer:
         for client_x in clients_for_excel:
             row = df[(df['clientid'] == client_x)]
             row.to_excel(writer, sheet_name=client_x)
-
+    return clients_for_excel
 def create_new_client():
     client_id = ''.join(random.sample(string.ascii_lowercase, 10))
     number_of_museums = 10
@@ -131,7 +130,9 @@ def get_dataframe():
         frames.append(temp_df)
     df = pd.concat(frames)
 
-    create_excel_file_input(df)
-    return df
+    clients_for_excel = create_excel_file_input(df)
+    print(clients_for_excel)
+    return df, clients_for_excel
 
-print(get_dataframe())
+dataframe, clients_for_excel = get_dataframe()
+
