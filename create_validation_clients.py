@@ -8,6 +8,8 @@ from datetime import date, datetime
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from pandas import ExcelWriter
+
 fileDir = os.path.dirname(os.path.realpath('__file__'))
 currentdate = date.today().strftime('%Y.%m.%d')
 # currentdate = '2019.04.02'
@@ -48,21 +50,34 @@ def make_feature_named(feature):
     return full_name
 
 def choose_feature():
-    # KLOPT NIETTTTT
-    print('1. LibraryHistory\n2. Visual\n3. Culture\n4. Naval\n5. Tech\n6. Ethnology\n7. Library\n8. Openair\n9. Parking\n10. Weelchair\n11. Disabled\n12. Trainstation\n13. Restaurant\n')
+    print('1. History\n2. Visual\n3. Culture\n4. Naval\n5. Tech\n6. Ethnology\n7. Library\n8. Openair\n9. Parking\n10. Weelchair\n11. Disabled\n12. Trainstation\n13. Restaurant\n')
     feature = input('Choose a feature from the list above:\n')
     return feature
+def return_feature(number):
+
+    if number == 1:
+        return random.randint(1,11), 3
+    if number == 2:
+        return random.randint(1,10), 14
+    elif number == 3:
+        return random.randint(1,9), 24
+    else:
+        return random.randint(1,9), 33
 
 def get_feature_list(df, number_f):
     list_of_lists = []
     feature_list = []
     feature_list_numbers = []
+    feature_group_list = []
     for x in range(number_f):
-        feature = random.randint(1,13)
-        while feature in feature_list_numbers:
-            feature = random.randint(1,13)
+        feature_group = random.randint(1,4)
+        feature, addup= return_feature(feature_group)
+        while feature_group in feature_group_list:
+            feature_group = random.randint(1,4)
+            feature, addup = return_feature(feature_group)
         feature_list_numbers.append(feature)
-        feature = int(feature) + 2
+        feature_group_list.append(feature_group)
+        feature = int(feature) + addup
         column = df[df.columns[feature]]
         temp_df = df[(column == 1)]
         mylist = temp_df['translationSetId'].to_list()
@@ -80,9 +95,18 @@ def get_random_museums(df, number_m, number_f):
     top_ten = list(set(random.choices(mylist,k=number_m)))
     return top_ten, feature_list
 
+def create_excel_file_input(df):
+    client_list = list(set(df['clientid'].to_list()))
+    clients_for_excel = (random.choices(client_list,k=10))
+    print(len(set(client_list)), clients_for_excel)
+    with ExcelWriter("input_excel.xlsx") as writer:
+        for client_x in clients_for_excel:
+            row = df[(df['clientid'] == client_x)]
+            row.to_excel(writer, sheet_name=client_x)
+
 def create_new_client():
     client_id = ''.join(random.sample(string.ascii_lowercase, 10))
-    number_of_museums = 5
+    number_of_museums = 10
     my_list = []
     feature_list = []
     df = pd.DataFrame()
@@ -96,14 +120,18 @@ def create_new_client():
     for id in my_list:
         count = random.randint(1,3)
         df = df.append({'clientid': client_id, 'translationSetId': id, 'count': count, 'features': feature_list}, ignore_index=True)
+
+
     return df
 
 def get_dataframe():
     frames = []
-    for i in range(5):
+    for i in range(50):
         temp_df = create_new_client()
         frames.append(temp_df)
     df = pd.concat(frames)
+
+    create_excel_file_input(df)
     return df
 
 print(get_dataframe())
