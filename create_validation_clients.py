@@ -56,13 +56,13 @@ def choose_feature():
 def return_feature(number):
 
     if number == 1:
-        return random.randint(1,11), 3
+        return random.randint(1,12), 3
     if number == 2:
-        return random.randint(1,10), 14
+        return random.randint(1,10), 15
     elif number == 3:
-        return random.randint(1,8), 24
+        return random.randint(1,9), 25
     else:
-        return random.randint(1,9), 32
+        return random.randint(1,7), 34
 
 def get_feature_list(df, number_f):
     list_of_lists = []

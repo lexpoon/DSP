@@ -220,7 +220,7 @@ df.rename(columns={'publicName_x': "publicName"}, inplace=True)
 
 
 # Create the update arrays for all the facilities
-# Feature group 1: Museum Themes (13 total)
+# Feature group 1: Museum Themes (12 total)
 visual_array = create_lists(df, 'visual', 3)
 culture_array = create_lists(df, 'culture', 2)
 naval_array = create_lists(df, 'naval', 17)

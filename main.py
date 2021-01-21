@@ -237,7 +237,6 @@ def run_all_validation():
 
     create_output_dataframes(feature_correct_dict, feature_wrong_dict)
     dataframe_dict = {}
-
     # clients_for_excel = get_clients()
     for client_x in clients_for_excel:
         row = df_total[(df_total['clientid'] == client_x)]
