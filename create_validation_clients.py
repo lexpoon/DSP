@@ -82,7 +82,7 @@ def get_feature_list(df, number_f):
         temp_df = df[(column == 1)]
         mylist = temp_df['translationSetId'].to_list()
         list_of_lists.append(mylist)
-        feature = feature-6
+        feature = feature-addup
         feature_name = make_feature_named(feature)
         feature_list.extend(feature_name)
     return list_of_lists, feature_list
@@ -111,7 +111,7 @@ def create_new_client():
     df = pd.DataFrame()
     '''CHOOSE THE AMOUNT OF FEATURES HERE'''
     # number_of_features = random.randint(1,3)
-    number_of_features = 3
+    number_of_features = 1
     temp_list, features = get_random_museums(rules_df, number_of_museums, number_of_features)
     my_list.extend(temp_list)
     feature_list.extend(features)
@@ -125,7 +125,7 @@ def create_new_client():
 
 def get_dataframe():
     frames = []
-    for i in range(50):
+    for i in range(500):
         temp_df = create_new_client()
         frames.append(temp_df)
     df = pd.concat(frames)
