@@ -60,9 +60,9 @@ def return_feature(number):
     if number == 2:
         return random.randint(1,10), 14
     elif number == 3:
-        return random.randint(1,9), 24
+        return random.randint(1,8), 24
     else:
-        return random.randint(1,9), 33
+        return random.randint(1,9), 32
 
 def get_feature_list(df, number_f):
     list_of_lists = []
@@ -123,7 +123,8 @@ def create_new_client():
     feature_list.extend(features)
 
     for id in my_list:
-        count = random.randint(1,3)
+        # count = random.randint(1,3)
+        count = 3
         museum_name = get_museum_name(id)
         df = df.append({'clientid': client_id, 'translationSetId': id,'museum_name': museum_name, 'count': count, 'features': feature_list}, ignore_index=True)
 

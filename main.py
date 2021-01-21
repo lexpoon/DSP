@@ -106,22 +106,39 @@ def create_statistical(df, museum_list, features, feature_correct_dict, feature_
     museum_total = len(museum_list)
     feature_total = len(features)
 
+    threshold = 7
+    if len(features) == 2:
+        threshold = 5
+    if len(features) > 2:
+        threshold = 4
     correct_total = 0
     for feature in features:
         data = df.loc['feature total', feature]
-        if len(features) == 1 and data >= 6:
-            # feature_dict[feature]['correct'] += 1
+
+        if feature == 'educative' or feature == 'art_galleries' or feature == 'science':
+            threshold = 3
+        if feature == 'military' or feature == 'churches' or feature == 'gardens' or feature == 'audiotour':
+            threshold = 1
+
+        if data >= threshold:
             feature_correct_dict[feature] += 1
             correct_total += 1
-        elif len(features) == 1 and data < 7:
-            # feature_dict[feature]['wrong'] += 1
-            feature_wrong_dict[feature] += 1
-        elif len(features) > 1 and data >= 4:
-            correct_total += 1
-            # feature_dict[feature]['correct'] += 1
         else:
-            # feature_dict[feature]['wrong'] += 1
             feature_wrong_dict[feature] += 1
+
+        # if len(features) == 1 and data >= 7:
+            # feature_dict[feature]['correct'] += 1
+            # feature_correct_dict[feature] += 1
+            # correct_total += 1
+        # elif len(features) == 1 and data < 7:
+        #     # feature_dict[feature]['wrong'] += 1
+        #     feature_wrong_dict[feature] += 1
+        # elif len(features) > 1 and data >= 4:
+        #     correct_total += 1
+        #     # feature_dict[feature]['correct'] += 1
+        # else:
+        #     # feature_dict[feature]['wrong'] += 1
+        #     feature_wrong_dict[feature] += 1
 
         # print(feature_dict)
     pass_fail = correct_total-feature_total
@@ -150,7 +167,10 @@ def create_output_dataframes(correct_dict, incorrect_dict):
     for k, v in correct_dict.items():
         correct = v
         wrong = incorrect_dict.get(k)
-        percentage = correct/(correct+wrong+1)
+        total = correct + wrong
+        if total == 0:
+            total += 1
+        percentage = correct/total
         combined_df = combined_df.append({'feature': k, 'correct': correct, 'wrong':wrong , 'percentage': percentage}, ignore_index=True)
 
     combined_df.to_csv('results validation.csv')
