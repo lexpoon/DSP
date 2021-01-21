@@ -81,8 +81,9 @@ def get_feature_list(df, number_f):
         column = df[df.columns[feature]]
         temp_df = df[(column == 1)]
         mylist = temp_df['translationSetId'].to_list()
+        # assert isinstance(mylist, object)
         list_of_lists.append(mylist)
-        feature = feature-addup
+        feature = feature-3
         feature_name = make_feature_named(feature)
         feature_list.extend(feature_name)
     return list_of_lists, feature_list
@@ -95,12 +96,17 @@ def get_random_museums(df, number_m, number_f):
     top_ten = list(set(random.choices(mylist,k=number_m)))
     return top_ten, feature_list
 
+def get_museum_name(id):
+    name = rules_df.loc[rules_df['translationSetId'] == id, 'publicName'].values[0]
+    return name
 def create_excel_file_input(df):
     client_list = list(set(df['clientid'].to_list()))
     clients_for_excel = (random.choices(client_list,k=10))
     with ExcelWriter("input_excel.xlsx") as writer:
         for client_x in clients_for_excel:
             row = df[(df['clientid'] == client_x)]
+            row.drop(columns='translationSetId', inplace=True)
+
             row.to_excel(writer, sheet_name=client_x)
     return clients_for_excel
 def create_new_client():
@@ -118,7 +124,8 @@ def create_new_client():
 
     for id in my_list:
         count = random.randint(1,3)
-        df = df.append({'clientid': client_id, 'translationSetId': id, 'count': count, 'features': feature_list}, ignore_index=True)
+        museum_name = get_museum_name(id)
+        df = df.append({'clientid': client_id, 'translationSetId': id,'museum_name': museum_name, 'count': count, 'features': feature_list}, ignore_index=True)
 
 
     return df
