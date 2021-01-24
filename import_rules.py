@@ -196,7 +196,7 @@ def create_row_vectors(row):
     # if row['kasteel'] != 0:
     #     vector += kasteel_array
 
-    vector[index] = 1
+    vector[index] = 0
     return vector
 
 # Create the dataframe from the museum file and so some cleaning

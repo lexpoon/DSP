@@ -71,24 +71,25 @@ def convert_museumid_to_name(vector):
 
     recomm_amount = 10
     ind = np.argpartition(vector, -10)[-10:]
-    idx = (-vector).argsort()[:recomm_amount]
-    idx = idx.tolist()
+    # idx = (-vector).argsort()[:recomm_amount]
+    # idx = idx.tolist()
 
     museum_name_list = []
     museum_id_list = []
-    for x in idx:
+    for x in ind:
         ''' MOET DE MUSEUM DATAFRAMES NOG CHECKEN - SORTEN OP MUSEUM NAAM OF ID?? ZODAT INDEX ALTIJD HETZELFDE IS'''
         museum_id_list.append(museum_df.loc[x].at['translationSetId'])
         museum_name_list.append(museum_df.loc[x].at['publicName'])
     return museum_name_list, museum_id_list
 
-def update_vectors(new, old, count):
+def update_vectors(museum_vector, client_vector, count):
 
-    myarray = np.array(new.values[0])
-    myarray *= count
-    new_array = np.transpose(myarray)
-    myarray = old*new_array
-    return myarray
+    museum_vector = np.array(museum_vector.values[0])
+    client_vector *= count
+    new_array = np.transpose(museum_vector)
+    new_vector = client_vector*new_array
+    print(client_vector)
+    return new_vector
 
 def prepare_excel_file(mydict):
     with ExcelWriter("validation_excel.xlsx") as writer:
@@ -161,6 +162,7 @@ def create_validation(museum_list, features):
     total_df.loc['feature total']= total_df.sum(numeric_only=True, axis=0)
     total_df.loc[:,'museum total'] = total_df.sum(numeric_only=True, axis=1)
     return total_df
+
 def create_output_dataframes(correct_dict, incorrect_dict):
     print(correct_dict)
     combined_df = pd.DataFrame()
@@ -179,27 +181,24 @@ def run_all_validation():
     client_vector_dict = {}
     client_features_dict = {}
     client_id_list = []
-    museum_count_dict = {}
     input_df, clients_for_excel = get_dataframe()
     print(clients_for_excel)
     for index, row in input_df.iterrows():
 
         client = row['clientid']
         museum = row['translationSetId']
-
-        ''' MOET NOG WAT DOEN MET DE COUNT VAN HIERONDER - VERWERKEN IN VECTOR MULTIPLICATION'''
         count = row['count']
 
         if client in client_id_list:
-            vector = client_vector_dict.get(client)
+            client_vector = client_vector_dict.get(client)
         else:
             client_id_list.append(client)
-            vector = np.ones(496, dtype=object)
+            client_vector = np.ones(496, dtype=object)
             features = row['features']
             client_features_dict[client] = features
 
         museum_vector = vector_df[(vector_df['translationSetId'] == museum)].vector
-        calculated_vector = update_vectors(museum_vector, vector, count)
+        calculated_vector = update_vectors(museum_vector, client_vector, count)
         client_vector_dict[client] = calculated_vector
 
     df_vectors = pd.DataFrame()
@@ -213,9 +212,6 @@ def run_all_validation():
     df_total = df_vectors.merge(df_features, how='inner', on='clientid')
 
     print('\n\n\nFROM HERE--------------\n')
-
-    # museum_validation_dict = dict.fromkeys(all_museums_list, {'correct': 0, 'wrong': 0})
-    # feature_validation_dict = dict.fromkeys(all_features_list, {'correct': 0, 'wrong': 0})
     feature_correct_dict = dict.fromkeys(all_features_list, 0)
     feature_wrong_dict = dict.fromkeys(all_features_list, 0)
 
@@ -246,6 +242,8 @@ def run_all_validation():
 
     df_total.to_csv('result_client_museums.csv')
 
+    for k, v in client_vector_dict.items():
+        print(k, v)
 def run_all_train():
     client_vector_dict = {}
     client_id_list = []
