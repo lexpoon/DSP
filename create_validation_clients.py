@@ -111,7 +111,7 @@ def create_excel_file_input(df):
     return clients_for_excel
 def create_new_client():
     client_id = ''.join(random.sample(string.ascii_lowercase, 10))
-    number_of_museums = 2
+    number_of_museums = 4
     my_list = []
     feature_list = []
     df = pd.DataFrame()
@@ -124,7 +124,7 @@ def create_new_client():
 
     for id in my_list:
         # count = random.randint(1,3)
-        count = 3
+        count = 1
         museum_name = get_museum_name(id)
         df = df.append({'clientid': client_id, 'translationSetId': id,'museum_name': museum_name, 'count': count, 'features': feature_list}, ignore_index=True)
 
@@ -133,7 +133,7 @@ def create_new_client():
 
 def get_dataframe():
     frames = []
-    for i in range(5):
+    for i in range(500):
         temp_df = create_new_client()
         frames.append(temp_df)
     df = pd.concat(frames)

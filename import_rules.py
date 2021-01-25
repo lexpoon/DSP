@@ -68,7 +68,7 @@ def create_true_falses_multiplication(row):
 
 def create_dataframe(filename):
 
-    df = pd.read_csv(filename, encoding='utf-8')
+    df = pd.read_csv(filename, encoding='utf-8', index_col=False, header=0)
     df_cleaned = df.drop_duplicates(subset=['publicName'])
     print(len(df_cleaned))
     return df_cleaned
@@ -94,8 +94,8 @@ def create_rules_overview_df(df_r):
 def create_row_vectors(row):
 
     index = row['index']
-    vector = np.zeros(496, dtype=object)
-    vector += 1
+
+    vector = np.ones(505, dtype=object)
     if row['library'] != 0:
         vector += library_array
     if row['openair'] != 0:
@@ -195,8 +195,8 @@ def create_row_vectors(row):
     #     vector += drenthe_array
     # if row['kasteel'] != 0:
     #     vector += kasteel_array
-
     vector[index] = 0
+
     return vector
 
 # Create the dataframe from the museum file and so some cleaning
@@ -204,15 +204,24 @@ filename = 'musea.csv'
 df = create_dataframe(filename)
 df = df.drop_duplicates(subset=['publicName'])
 df.rename(columns={'Unnamed: 0': "index"}, inplace=True)
-df = df[['publicName', 'index', 'translationSetId', 'facilities']]
+df.drop(columns='index')
+# df = df[['publicName', 'index', 'translationSetId', 'facilities']]
+df = df[['publicName', 'translationSetId', 'facilities']]
 df = df.sort_values('translationSetId')
 df = df.reset_index(drop=True)
+# df.reset_index(level=0, inplace=True)
+
 # Import the extra categories from the visitor file
-df_visitor = create_dataframe('final_museum.csv')
+df_visitor = create_dataframe('musea_finalv2_Grae_adjusted.csv')
+df_visitor = df_visitor.drop_duplicates(subset=['publicName'])
 df = df.merge(df_visitor, how='left', left_on='translationSetId', right_on='translationSetId')
 df = df.fillna(0)
+df.reset_index(level=0, inplace=True)
+
+temp = df['index'].to_list()
+print(temp)
 # Add all the facilites as on its own columns
-df[['library', 'openair', 'parking', 'weelchair', 'disabled', 'trainstation', 'restaurant']] = False
+# df[['library', 'openair', 'parking', 'weelchairdisabled', 'trainstation', 'restaurant']] = False
 # For every facility add the increase/weight/update value which will be converted to the update arrays
 df = df.apply(create_true_falses_multiplication, axis=1)
 df.drop(columns='publicName_y', inplace=True)
@@ -290,7 +299,7 @@ restaurant_array = create_lists(df, 'restaurant', 4)
 
 df['vector'] = df.apply(create_row_vectors, axis=1)
 
-print(df['vector'].head(n=50))
+# print(df['vector'].head(n=50))
 vector_df = df[['translationSetId', 'vector']]
 
 vector_df.to_csv('vector_csv.csv')

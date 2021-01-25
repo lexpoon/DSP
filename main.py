@@ -16,19 +16,15 @@ currentdate = date.today().strftime('%Y.%m.%d')
 # Import our other files
 from recommendations import top_ten_random
 # from analytics import run_all_analytics
-print('joe')
 
 from create_validation_clients import get_dataframe
-print('joe')
 
 from import_rules import vector_df, df_rules_overview
-print('joe')
 
 SYMBOLS = [' ', '/', '-', '&', ',', '\’','\‘', '\'', "'"]
 global user_id_list
 user_id_list = []
 
-print('joe')
 # df_rules_overview = df_rules_overview.astype(int)
 # df_rules_overview.replace(1.0, value=1, inplace=True)
 # df_rules_overview.replace(0.0, value=0, inplace=True)
@@ -88,7 +84,6 @@ def update_vectors(museum_vector, client_vector, count):
     client_vector *= count
     new_array = np.transpose(museum_vector)
     new_vector = client_vector*new_array
-    print(client_vector)
     return new_vector
 
 def prepare_excel_file(mydict):
@@ -107,7 +102,7 @@ def create_statistical(df, museum_list, features, feature_correct_dict, feature_
     museum_total = len(museum_list)
     feature_total = len(features)
 
-    threshold = 7
+    threshold = 9
     if len(features) == 2:
         threshold = 5
     if len(features) > 2:
@@ -164,7 +159,6 @@ def create_validation(museum_list, features):
     return total_df
 
 def create_output_dataframes(correct_dict, incorrect_dict):
-    print(correct_dict)
     combined_df = pd.DataFrame()
     for k, v in correct_dict.items():
         correct = v
@@ -182,7 +176,6 @@ def run_all_validation():
     client_features_dict = {}
     client_id_list = []
     input_df, clients_for_excel = get_dataframe()
-    print(clients_for_excel)
     for index, row in input_df.iterrows():
 
         client = row['clientid']
@@ -193,7 +186,7 @@ def run_all_validation():
             client_vector = client_vector_dict.get(client)
         else:
             client_id_list.append(client)
-            client_vector = np.ones(496, dtype=object)
+            client_vector = np.ones(505, dtype=object)
             features = row['features']
             client_features_dict[client] = features
 
@@ -242,8 +235,6 @@ def run_all_validation():
 
     df_total.to_csv('result_client_museums.csv')
 
-    for k, v in client_vector_dict.items():
-        print(k, v)
 def run_all_train():
     client_vector_dict = {}
     client_id_list = []
@@ -261,7 +252,7 @@ def run_all_train():
             vector = client_vector_dict.get(client)
         else:
             client_id_list.append(client)
-            vector = np.ones(496, dtype=object)
+            vector = np.ones(505, dtype=object)
 
         museum_vector = vector_df[(vector_df['translationSetId'] == museum)].vector
         calculated_vector = update_vectors(museum_vector, vector)
