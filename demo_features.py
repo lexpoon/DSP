@@ -64,14 +64,16 @@ def return_feature(number):
     else:
         return random.randint(1,7), 34
 
-def get_feature_list(df, number_f):
+def get_feature_list(df, feature_list):
+
+    number_f = len(feature_list)
     list_of_lists = []
     feature_list = []
     feature_list_numbers = []
     feature_group_list = []
     for x in range(number_f):
-        feature_group = random.randint(1,4)
-        feature, addup= return_feature(feature_group)
+        feature = feature_list[x]
+        feature, addup = return_feature(feature_group)
         while feature_group in feature_group_list:
             feature_group = random.randint(1,4)
             feature, addup = return_feature(feature_group)
@@ -112,10 +114,10 @@ def get_feature_list_demo(df, number_f):
         feature_list.extend(feature_name)
     return list_of_lists, feature_list
 
-def get_random_museums(df, number_m, number_f):
+def get_random_museums(df, number_m, feature_list):
     mylist = []
     while not mylist:
-        list_of_lists, feature_list = get_feature_list(df, number_f)
+        list_of_lists, feature_list = get_feature_list(df, feature_list)
         mylist = list(reduce(set.intersection, [set(item) for item in list_of_lists ]))
     chosen_museums = list(set(random.choices(mylist,k=number_m)))
     return chosen_museums, feature_list
@@ -125,7 +127,7 @@ def get_museum_name(id):
     return name
 def create_excel_file_input(df):
     client_list = list(set(df['clientid'].to_list()))
-    clients_for_excel = (random.choices(client_list,k=30))
+    clients_for_excel = (random.choices(client_list,k=10))
     with ExcelWriter("input_excel.xlsx") as writer:
         for client_x in clients_for_excel:
             row = df[(df['clientid'] == client_x)]
@@ -133,16 +135,18 @@ def create_excel_file_input(df):
 
             row.to_excel(writer, sheet_name=client_x)
     return clients_for_excel
-def create_new_client():
+def create_new_client(mylist):
     client_id = ''.join(random.sample(string.ascii_lowercase, 10))
+    # client_id = f'client{client}'
     number_of_museums = 4
     my_list = []
     feature_list = []
     df = pd.DataFrame()
     '''CHOOSE THE AMOUNT OF FEATURES HERE'''
     # number_of_features = random.randint(1,3)
-    number_of_features = 1
-    temp_list, features = get_random_museums(rules_df, number_of_museums, number_of_features)
+
+
+    temp_list, features = get_random_museums(rules_df, number_of_museums, mylist)
     my_list.extend(temp_list)
     feature_list.extend(features)
 
@@ -155,10 +159,11 @@ def create_new_client():
 
     return df
 
-def get_dataframe():
+def get_dataframe_features():
     frames = []
-    for i in range(50):
-        temp_df = create_new_client()
+    feature_list_all = [[3]]
+    for i in feature_list_all:
+        temp_df = create_new_client(i)
         frames.append(temp_df)
     df = pd.concat(frames)
 
@@ -166,4 +171,7 @@ def get_dataframe():
     print(clients_for_excel)
     return df, clients_for_excel
 
-dataframe, clients_for_excel = get_dataframe()
+def get_dataframe_museums():
+    pass
+features_dataframe, clients_for_excel = get_dataframe_features()
+museum_df = get_dataframe_museums()

@@ -17,8 +17,6 @@ currentdate = date.today().strftime('%Y.%m.%d')
 from recommendations import top_ten_random
 # from analytics import run_all_analytics
 
-from create_validation_clients import get_dataframe
-
 from import_rules import vector_df, df_rules_overview
 
 SYMBOLS = [' ', '/', '-', '&', ',', '\’','\‘', '\'', "'"]
@@ -102,7 +100,7 @@ def create_statistical(df, museum_list, features, feature_correct_dict, feature_
     museum_total = len(museum_list)
     feature_total = len(features)
 
-    threshold = 7
+    threshold = 9
     if len(features) == 2:
         threshold = 5
     if len(features) > 2:
@@ -175,7 +173,8 @@ def run_all_validation():
     client_vector_dict = {}
     client_features_dict = {}
     client_id_list = []
-    input_df, clients_for_excel = get_dataframe()
+    input_df = pd.read_csv('Demo/input_demo.csv', header=0)
+
     for index, row in input_df.iterrows():
 
         client = row['clientid']
@@ -187,8 +186,6 @@ def run_all_validation():
         else:
             client_id_list.append(client)
             client_vector = np.ones(505, dtype=object)
-            features = row['features']
-            client_features_dict[client] = features
 
         museum_vector = vector_df[(vector_df['translationSetId'] == museum)].vector
         calculated_vector = update_vectors(museum_vector, client_vector, count)
@@ -198,71 +195,14 @@ def run_all_validation():
     for k, v in client_vector_dict.items():
         museum_name_list, museum_id_list = convert_museumid_to_name(v)
         df_vectors = df_vectors.append({'clientid': k, 'museum_list': museum_name_list, 'museum_id': museum_id_list}, ignore_index=True)
-    df_features = pd.DataFrame()
-    for k, v in client_features_dict.items():
-        df_features = df_features.append({'clientid': k, 'features': v}, ignore_index=True)
-
-    df_total = df_vectors.merge(df_features, how='inner', on='clientid')
-
-    print('\n\n\nFROM HERE--------------\n')
-    feature_correct_dict = dict.fromkeys(all_features_list, 0)
-    feature_wrong_dict = dict.fromkeys(all_features_list, 0)
-
-    correct_wrong_list = []
-    for index, row in df_total.iterrows():
-        museum_list = row['museum_id']
-        features = row['features']
-        result_df = create_validation(museum_list, features)
-        correct_wrong_list.append(create_statistical(result_df, museum_list, features, feature_correct_dict, feature_wrong_dict))
+    my_list = df_vectors['museum_list'].to_list()
+    print(my_list)
+    with open('Demo/demo_output.csv', 'w', newline='\n') as f:
+        for item in my_list:
+            writer = csv.writer(f)
+            writer.writerow(item)
 
 
+    # df_vectors.to_csv('demo_output.csv')
 
-    correct= correct_wrong_list.count(0)
-    wrong= len(correct_wrong_list)-correct
-    total = wrong + correct
-    print(f'Total correct recommendations: {correct}')
-    print(f'Total wrong recommendations: {wrong}')
-    print(f'Percentage correct: {correct/total}')
-
-    create_output_dataframes(feature_correct_dict, feature_wrong_dict)
-    dataframe_dict = {}
-    # clients_for_excel = get_clients()
-    for client_x in clients_for_excel:
-        row = df_total[(df_total['clientid'] == client_x)]
-        temp_df = create_excel_sheet(row)
-        dataframe_dict[client_x] = temp_df
-        prepare_excel_file(dataframe_dict)
-
-    df_total.to_csv('result_client_museums.csv')
-
-def run_all_train():
-    client_vector_dict = {}
-    client_id_list = []
-    '''HIER INPUT VAN ANALYTICS DATA IN GIEREN'''
-    input_df = get_dataframe()
-    print(input_df)
-
-    for index, row in input_df.iterrows():
-        client = row['clientid']
-        museum = row['translationSetId']
-        count = row['count']
-
-
-        if client in client_id_list:
-            vector = client_vector_dict.get(client)
-        else:
-            client_id_list.append(client)
-            vector = np.ones(505, dtype=object)
-
-        museum_vector = vector_df[(vector_df['translationSetId'] == museum)].vector
-        calculated_vector = update_vectors(museum_vector, vector)
-        client_vector_dict[client] = calculated_vector
-
-    df = pd.DataFrame()
-    for k, v in client_vector_dict.items():
-        museum_name_list, museum_id_list = convert_museumid_to_name(v)
-        df = df.append({'clientid': k, 'museum_list': museum_name_list, 'museum_id': museum_id_list}, ignore_index=True)
-    df.to_csv('result_client_museums.csv')
-
-# run_all_train()
 run_all_validation()
