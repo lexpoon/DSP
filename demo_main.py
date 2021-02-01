@@ -197,11 +197,18 @@ def run_all_validation():
         df_vectors = df_vectors.append({'clientid': k, 'museum_list': museum_name_list, 'museum_id': museum_id_list}, ignore_index=True)
     my_list = df_vectors['museum_list'].to_list()
     print(my_list)
-    with open('Demo/demo_output.csv', 'w', newline='\n') as f:
+    my_list = my_list[0]
+    print(my_list)
+
+    with open('Demo/demo_output.csv', 'w') as f:
         for item in my_list:
             writer = csv.writer(f)
-            writer.writerow(item)
-
+            writer.writerow([item])
+    # with open(filepath, 'w', encoding='utf8') as f:
+    #
+    #     for item in my_list:
+    #         line = str(item) + '; '
+    #         f.write(line)
 
     # df_vectors.to_csv('demo_output.csv')
 
