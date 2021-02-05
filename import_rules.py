@@ -8,12 +8,12 @@ import shutil
 from datetime import date, datetime
 import pandas as pd
 import numpy as np
-
 fileDir = os.path.dirname(os.path.realpath('__file__'))
 currentdate = date.today().strftime('%Y.%m.%d')
 # currentdate = '2019.04.02'
 
 SYMBOLS = [' ', '/', '-', '&', ',', '\’', '\‘', '\'', "'"]
+
 
 def move_files(filename):
     shutil.move("%s/%s" % (fileDir, filename), "%s/RESULTS/%s" % (fileDir, filename))
@@ -23,10 +23,12 @@ def create_file(filename, df):
     df.to_excel(filename, index=False)
     move_files(filename)
 
+
 def clean_column(df, column):
     for symbol in SYMBOLS:
         df["%s" % column] = df["%s" % column].astype(str).str.replace(r'%s' % symbol, '')
     return df
+
 
 ''' STANDAARD '''
 from ast import literal_eval
@@ -66,16 +68,19 @@ def create_true_falses_multiplication(row):
     # These are the vector updates based on the categories found in the external museum data file
     return row
 
+
 def create_dataframe(filename):
 
     df = pd.read_csv(filename, encoding='utf-8', index_col=False, header=0)
     df_cleaned = df.drop_duplicates(subset=['publicName'])
     return df_cleaned
 
+
 def apply_onehot(df):
     one_hot_cat = df.museaal_thema.str.get_dummies(', ')
     df = pd.concat([df, one_hot_cat], axis=1)
     return df
+
 
 def create_lists(df, x, addition):
     mylist = df[f'{x}'].tolist()
@@ -84,9 +89,12 @@ def create_lists(df, x, addition):
     myarray += 1
     return myarray
 
+
 def create_rules_overview_df(df_r):
     df.drop(['index', 'facilities', 'vector'], axis=1, inplace=True)
     return df_r
+
+
 def create_row_vectors(row):
 
     index = row['index']
@@ -169,6 +177,7 @@ def create_row_vectors(row):
     vector[index] = 0
 
     return vector
+
 
 # Create the dataframe from the museum file and so some cleaning
 filename = 'Data/Taxonomy_updated/musea.csv'

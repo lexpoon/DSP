@@ -23,14 +23,17 @@ all_features_list = feature_df['Name'].to_list()
 def move_files(filename):
     shutil.move("%s/%s" %(fileDir, filename), "%s/RESULTS/%s" %(fileDir, filename))
 
+
 def create_file(filename, df):
     df.to_excel(filename, index=False)
     move_files(filename)
+
 
 def clean_column(df, column):
     for symbol in SYMBOLS:
         df["%s" %column] = df["%s" %column].astype(str).str.replace(r'%s' % symbol,'')
     return df
+
 
 def convert_museumid_to_name(vector):
     # This function sorts the vector scores, picks the highest numbers as index number, which is the museum
@@ -44,6 +47,7 @@ def convert_museumid_to_name(vector):
         museum_name_list.append(museum_df.loc[x].at['publicName'])
     return museum_name_list, museum_id_list
 
+
 def update_vectors(museum_vector, client_vector, count):
 
     # The museum vector is created to an array. Aftwards multiplied the amount of clicks. This is mainly due to
@@ -55,16 +59,20 @@ def update_vectors(museum_vector, client_vector, count):
     new_vector = client_vector*new_array
     return new_vector
 
+
 def prepare_excel_file(mydict):
     with ExcelWriter("validation_excel.xlsx") as writer:
         for k, v in mydict.items():
             v.to_excel(writer, sheet_name=k)
     move_files('validation_excel.xlsx')
+
+
 def create_excel_sheet(row):
     museum_list = row['museum_id'].values[0]
     features = row['features'].values[0]
     df = create_validation(museum_list, features)
     return df
+
 
 def create_statistical(df, features, feature_correct_dict, feature_wrong_dict):
     feature_total = len(features)
@@ -92,6 +100,7 @@ def create_statistical(df, features, feature_correct_dict, feature_wrong_dict):
     pass_fail = correct_total-feature_total
     return pass_fail
 
+
 def create_validation(museum_list, features):
     new_df = df_rules_overview['translationSetId']
     new_df = new_df.to_frame()
@@ -110,6 +119,7 @@ def create_validation(museum_list, features):
     total_df.loc[:,'museum total'] = total_df.sum(numeric_only=True, axis=1)
     return total_df
 
+
 def create_output_dataframes(correct_dict, incorrect_dict):
     combined_df = pd.DataFrame()
     for k, v in correct_dict.items():
@@ -122,6 +132,8 @@ def create_output_dataframes(correct_dict, incorrect_dict):
         combined_df = combined_df.append({'feature': k, 'correct': correct, 'wrong':wrong , 'percentage': percentage}, ignore_index=True)
     combined_df.to_csv('results validation.csv')
     move_files('results validation.csv')
+
+
 def run_all_validation():
     client_vector_dict = {}
     client_features_dict = {}
@@ -186,6 +198,8 @@ def run_all_validation():
         prepare_excel_file(dataframe_dict)
     df_total.to_csv('result_client_museums.csv')
     move_files('result_client_museums.csv')
+
+
 def run_all_train():
     client_vector_dict = {}
     client_id_list = []
@@ -212,11 +226,14 @@ def run_all_train():
         df = df.append({'clientid': k, 'museum_list': museum_name_list, 'museum_id': museum_id_list}, ignore_index=True)
     df.to_csv('result_client_museums.csv')
     move_files('result_client_museums.csv')
+
+
 def run_script():
     antwoord = input('Run training please type 1, run validation please type 2:\n')
     if antwoord == '1':
         run_all_train()
     else:
         run_all_validation()
+
 
 run_script()

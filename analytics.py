@@ -32,7 +32,6 @@ def clean_column(df, column):
 
 ''' STANDAARD '''
 
-
 def clean_rows_pageviews(row):
     data = row['dimensions']
     row['clientid'] = data[0]
@@ -69,12 +68,13 @@ def run_all_analytics():
     frames = []
     for file in os.listdir(path):
         print(f'Reading files for: {file}\n')
-
         df_pageview = create_dataframe_pageviews(file)
         frames.append(df_pageview)
+
     df = pd.concat(frames)
     df.to_csv('full_run_vectors.csv')
     move_files('full_run_vectors.csv')
     return count_content(df)
+
 
 analytics_df = run_all_analytics()

@@ -9,31 +9,32 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from pandas import ExcelWriter
-
 fileDir = os.path.dirname(os.path.realpath('__file__'))
 currentdate = date.today().strftime('%Y.%m.%d')
 # currentdate = '2019.04.02'
 # Import our other files
 from ast import literal_eval
 from functools import reduce
-
 SYMBOLS = [' ', '/', '-', '&', ',', '\’','\‘', '\'', "'"]
+
 
 rules_df = pd.read_csv('rules_overview.csv', header=0)
 feature_df = pd.read_csv('featurelist.csv')
 
-
 def move_files(filename):
     shutil.move("%s/%s" %(fileDir, filename), "%s/RESULTS/%s" %(fileDir, filename))
+
 
 def create_file(filename, df):
     df.to_excel(filename, index=False)
     move_files(filename)
 
+
 def clean_column(df, column):
     for symbol in SYMBOLS:
         df["%s" %column] = df["%s" %column].astype(str).str.replace(r'%s' % symbol,'')
     return df
+
 
 ''' STANDAARD '''
 
@@ -45,16 +46,19 @@ def convert_museumid_to_name(recom_list):
         museum_name_list.extend(museum_df.loc[museum_df['translationSetId'] == x].publicName.iloc[0])
     return museum_name_list
 
+
 def make_feature_named(feature):
     full_name = feature_df.loc[(feature_df['Number'] == feature), 'Name']
     return full_name
+
 
 def choose_feature():
     print('1. History\n2. Visual\n3. Culture\n4. Naval\n5. Tech\n6. Ethnology\n7. Library\n8. Openair\n9. Parking\n10. Weelchair\n11. Disabled\n12. Trainstation\n13. Restaurant\n')
     feature = input('Choose a feature from the list above:\n')
     return feature
-def return_feature(number):
 
+
+def return_feature(number):
     if number == 1:
         return random.randint(1,12), 3
     if number == 2:
@@ -64,13 +68,14 @@ def return_feature(number):
     else:
         return random.randint(1,7), 34
 
-def get_feature_list(df, feature_list):
 
+def get_feature_list(df, feature_list):
     number_f = len(feature_list)
     list_of_lists = []
     feature_list = []
     feature_list_numbers = []
     feature_group_list = []
+
     for x in range(number_f):
         feature = feature_list[x]
         feature, addup = return_feature(feature_group)
@@ -89,6 +94,7 @@ def get_feature_list(df, feature_list):
         feature_name = make_feature_named(feature)
         feature_list.extend(feature_name)
     return list_of_lists, feature_list
+
 
 def get_feature_list_demo(df, number_f):
     list_of_lists = []
@@ -114,6 +120,7 @@ def get_feature_list_demo(df, number_f):
         feature_list.extend(feature_name)
     return list_of_lists, feature_list
 
+
 def get_random_museums(df, number_m, feature_list):
     mylist = []
     while not mylist:
@@ -122,9 +129,12 @@ def get_random_museums(df, number_m, feature_list):
     chosen_museums = list(set(random.choices(mylist,k=number_m)))
     return chosen_museums, feature_list
 
+
 def get_museum_name(id):
     name = rules_df.loc[rules_df['translationSetId'] == id, 'publicName'].values[0]
     return name
+
+
 def create_excel_file_input(df):
     client_list = list(set(df['clientid'].to_list()))
     clients_for_excel = (random.choices(client_list,k=10))
@@ -135,6 +145,8 @@ def create_excel_file_input(df):
 
             row.to_excel(writer, sheet_name=client_x)
     return clients_for_excel
+
+
 def create_new_client(mylist):
     client_id = ''.join(random.sample(string.ascii_lowercase, 10))
     # client_id = f'client{client}'
@@ -144,7 +156,6 @@ def create_new_client(mylist):
     df = pd.DataFrame()
     '''CHOOSE THE AMOUNT OF FEATURES HERE'''
     # number_of_features = random.randint(1,3)
-
 
     temp_list, features = get_random_museums(rules_df, number_of_museums, mylist)
     my_list.extend(temp_list)
@@ -156,8 +167,8 @@ def create_new_client(mylist):
         museum_name = get_museum_name(id)
         df = df.append({'clientid': client_id, 'translationSetId': id,'museum_name': museum_name, 'count': count, 'features': feature_list}, ignore_index=True)
 
-
     return df
+
 
 def get_dataframe_features():
     frames = []
@@ -170,6 +181,7 @@ def get_dataframe_features():
     clients_for_excel = create_excel_file_input(df)
     print(clients_for_excel)
     return df, clients_for_excel
+
 
 def get_dataframe_museums():
     pass

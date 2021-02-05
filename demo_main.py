@@ -36,17 +36,21 @@ museum_df = museum_df.sort_values('translationSetId')
 museum_df = museum_df.reset_index(drop=True)
 all_museums_list = museum_df['translationSetId'].to_list()
 
+
 def move_files(filename):
     shutil.move("%s/%s" %(fileDir, filename), "%s/RESULTS/%s" %(fileDir, filename))
+
 
 def create_file(filename, df):
     df.to_excel(filename, index=False)
     move_files(filename)
 
+
 def clean_column(df, column):
     for symbol in SYMBOLS:
         df["%s" %column] = df["%s" %column].astype(str).str.replace(r'%s' % symbol,'')
     return df
+
 
 ''' STANDAARD '''
 from ast import literal_eval
@@ -55,11 +59,11 @@ def create_excel_list():
     with open('excel_clients.txt', 'r') as f:
         for x in f:
             clients_for_excel = x.split(';')
-
     return clients_for_excel
+
+
 def convert_museumid_to_name(vector):
     ''' HIER MUSEUM DF UIT HALEN EN ERGENS BOVEN GLOBAL ERIN FIXEN'''
-
     recomm_amount = 10
     ind = np.argpartition(vector, -10)[-10:]
     # idx = (-vector).argsort()[:recomm_amount]
@@ -73,25 +77,27 @@ def convert_museumid_to_name(vector):
         museum_name_list.append(museum_df.loc[x].at['publicName'])
     return museum_name_list, museum_id_list
 
-def update_vectors(museum_vector, client_vector, count):
 
+def update_vectors(museum_vector, client_vector, count):
     museum_vector = np.array(museum_vector.values[0])
     client_vector *= count
     new_array = np.transpose(museum_vector)
     new_vector = client_vector*new_array
     return new_vector
 
+
 def prepare_excel_file(mydict):
     with ExcelWriter("validation_excel.xlsx") as writer:
         for k, v in mydict.items():
             v.to_excel(writer, sheet_name=k)
 
+
 def create_excel_sheet(row):
     museum_list = row['museum_id'].values[0]
     features = row['features'].values[0]
     df = create_validation(museum_list, features)
-
     return df
+
 
 def create_statistical(df, museum_list, features, feature_correct_dict, feature_wrong_dict):
     museum_total = len(museum_list)
@@ -135,6 +141,7 @@ def create_statistical(df, museum_list, features, feature_correct_dict, feature_
     pass_fail = correct_total-feature_total
     return pass_fail
 
+
 def create_validation(museum_list, features):
     new_df = df_rules_overview['translationSetId']
     new_df = new_df.to_frame()
@@ -153,6 +160,7 @@ def create_validation(museum_list, features):
     total_df.loc[:,'museum total'] = total_df.sum(numeric_only=True, axis=1)
     return total_df
 
+
 def create_output_dataframes(correct_dict, incorrect_dict):
     combined_df = pd.DataFrame()
     for k, v in correct_dict.items():
@@ -163,8 +171,8 @@ def create_output_dataframes(correct_dict, incorrect_dict):
             total += 1
         percentage = correct/total
         combined_df = combined_df.append({'feature': k, 'correct': correct, 'wrong':wrong , 'percentage': percentage}, ignore_index=True)
-
     combined_df.to_csv('results validation.csv')
+
 
 def run_all_validation():
     client_vector_dict = {}
