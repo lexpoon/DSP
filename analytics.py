@@ -19,9 +19,11 @@ SYMBOLS = [' ', '/', '-', '&', ',', '\’','\‘', '\'', "'"]
 def move_files(filename):
     shutil.move("%s/%s" %(fileDir, filename), "%s/RESULTS/%s" %(fileDir, filename))
 
+
 def create_file(filename, df):
     df.to_excel(filename, index=False)
     move_files(filename)
+
 
 def clean_column(df, column):
     for symbol in SYMBOLS:
@@ -29,6 +31,7 @@ def clean_column(df, column):
     return df
 
 ''' STANDAARD '''
+
 
 def clean_rows_pageviews(row):
     data = row['dimensions']
@@ -40,6 +43,7 @@ def clean_rows_pageviews(row):
     row['path'] = data[4]
     return row
 
+
 # Deze functie gebruiken bij hele data set, hieronder wordt functie gebruikt waar maar 1000 instances worden geladen
 def create_dataframe_pageviews(filename):
     with open(f"{fileDir}/Data/pageviews/{filename}", "r") as read_file:
@@ -50,12 +54,14 @@ def create_dataframe_pageviews(filename):
     df.drop(columns=['dimensions', 'metrics'], inplace=True)
     return df
 
+
 def count_content(df):
     count_series = df.groupby(['clientid', 'contentid']).size()
     new_df = count_series.to_frame(name = 'amount').reset_index()
     new_df.sort_values(by=['amount'], ascending=False, inplace=True)
     new_df.to_csv('full_run_vectors_counts.csv')
     return new_df
+
 
 def run_all_analytics():
     # This function loops over all the json analytics files and returns a dataframe with client id, museums clicked and the number of times clicked
