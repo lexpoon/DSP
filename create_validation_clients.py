@@ -9,18 +9,16 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from pandas import ExcelWriter
-
-fileDir = os.path.dirname(os.path.realpath('__file__'))
-currentdate = date.today().strftime('%Y.%m.%d')
-# currentdate = '2019.04.02'
-# Import our other files
 from ast import literal_eval
 from functools import reduce
 
+fileDir = os.path.dirname(os.path.realpath('__file__'))
+currentdate = date.today().strftime('%Y.%m.%d')
 SYMBOLS = [' ', '/', '-', '&', ',', '\’','\‘', '\'', "'"]
 
-rules_df = pd.read_csv('rules_overview.csv', header=0)
-feature_df = pd.read_csv('featurelist.csv')
+# Import needed dataframes
+rules_df = pd.read_csv('Data/rules_overview.csv', header=0)
+feature_df = pd.read_csv('Data/featurelist.csv')
 
 
 def move_files(filename):
@@ -81,7 +79,6 @@ def get_feature_list(df, number_f):
         column = df[df.columns[feature]]
         temp_df = df[(column == 1)]
         mylist = temp_df['translationSetId'].to_list()
-        # assert isinstance(mylist, object)
         list_of_lists.append(mylist)
         feature = feature-3
         feature_name = make_feature_named(feature)
@@ -132,30 +129,28 @@ def create_excel_file_input(df):
             row.drop(columns='translationSetId', inplace=True)
 
             row.to_excel(writer, sheet_name=client_x)
+    move_files('input_excel.xlsx')
     return clients_for_excel
 def create_new_client():
     client_id = ''.join(random.sample(string.ascii_lowercase, 10))
-    number_of_museums = 4
+    number_of_museums = 3
     my_list = []
     feature_list = []
     df = pd.DataFrame()
     '''CHOOSE THE AMOUNT OF FEATURES HERE'''
-    # number_of_features = random.randint(1,3)
-    number_of_features = 1
+    number_of_features = 3
     temp_list, features = get_random_museums(rules_df, number_of_museums, number_of_features)
     my_list.extend(temp_list)
     feature_list.extend(features)
 
     for id in my_list:
-        # count = random.randint(1,3)
         count = 1
         museum_name = get_museum_name(id)
         df = df.append({'clientid': client_id, 'translationSetId': id,'museum_name': museum_name, 'count': count, 'features': feature_list}, ignore_index=True)
 
-
     return df
 
-def get_dataframe():
+def get_dataframe_validation():
     frames = []
     for i in range(50):
         temp_df = create_new_client()
@@ -163,7 +158,6 @@ def get_dataframe():
     df = pd.concat(frames)
 
     clients_for_excel = create_excel_file_input(df)
-    print(clients_for_excel)
     return df, clients_for_excel
 
-dataframe, clients_for_excel = get_dataframe()
+dataframe, clients_for_excel = get_dataframe_validation()

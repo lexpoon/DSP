@@ -14,9 +14,6 @@ fileDir = os.path.dirname(os.path.realpath('__file__'))
 currentdate = date.today().strftime('%Y.%m.%d')
 # currentdate = '2019.04.02'
 # Import our other files
-from recommendations import top_ten_random
-# from analytics import run_all_analytics
-
 from import_rules import vector_df, df_rules_overview
 
 SYMBOLS = [' ', '/', '-', '&', ',', '\’','\‘', '\'', "'"]
@@ -29,7 +26,7 @@ user_id_list = []
 # df_rules_overview.replace(1, value=True, inplace=True)
 # df_rules_overview.replace(0, value=False, inplace=True)
 
-feature_df = pd.read_csv("featurelist.csv")
+feature_df = pd.read_csv("Data/featurelist.csv")
 all_features_list = feature_df['Name'].to_list()
 
 df_x = pd.read_csv(f"{fileDir}/musea.csv", header=0)

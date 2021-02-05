@@ -70,13 +70,11 @@ def create_dataframe(filename):
 
     df = pd.read_csv(filename, encoding='utf-8', index_col=False, header=0)
     df_cleaned = df.drop_duplicates(subset=['publicName'])
-    print(len(df_cleaned))
     return df_cleaned
 
 def apply_onehot(df):
     one_hot_cat = df.museaal_thema.str.get_dummies(', ')
     df = pd.concat([df, one_hot_cat], axis=1)
-    print(df.info())
     return df
 
 def create_lists(df, x, addition):
@@ -88,8 +86,6 @@ def create_lists(df, x, addition):
 
 def create_rules_overview_df(df_r):
     df.drop(['index', 'facilities', 'vector'], axis=1, inplace=True)
-    print(df_r)
-
     return df_r
 def create_row_vectors(row):
 
@@ -170,58 +166,29 @@ def create_row_vectors(row):
         vector += scavenger_array
     if row['science'] != 0:
         vector += science_array
-
-    # if row['amsterdam'] != 0:
-    #     vector += amsterdam_array
-    # if row['utrecht'] != 0:
-    #     vector += utrecht_array
-    # if row['denhaag'] != 0:
-    #     vector += denhaag_array
-    # if row['leiden'] != 0:
-    #     vector += leiden_array
-    # if row['arnhem'] != 0:
-    #     vector += arnhem_array
-    # if row['groningen'] != 0:
-    #     vector += groningen_array
-    # if row['rotterdam'] != 0:
-    #     vector += rotterdam_array
-    # if row['limburg'] != 0:
-    #     vector += limburg_array
-    # if row['friesland'] != 0:
-    #     vector += friesland_array
-    # if row['gelderland'] != 0:
-    #     vector += gelderland_array
-    # if row['drenthe'] != 0:
-    #     vector += drenthe_array
-    # if row['kasteel'] != 0:
-    #     vector += kasteel_array
     vector[index] = 0
 
     return vector
 
 # Create the dataframe from the museum file and so some cleaning
-filename = 'musea.csv'
+filename = 'Data/Taxonomy_updated/musea.csv'
 df = create_dataframe(filename)
 df = df.drop_duplicates(subset=['publicName'])
 df.rename(columns={'Unnamed: 0': "index"}, inplace=True)
 df.drop(columns='index')
-# df = df[['publicName', 'index', 'translationSetId', 'facilities']]
+museum_df = df.sort_values('translationSetId')
+museum_df.reset_index(inplace=True)
 df = df[['publicName', 'translationSetId', 'facilities']]
 df = df.sort_values('translationSetId')
 df = df.reset_index(drop=True)
-# df.reset_index(level=0, inplace=True)
 
 # Import the extra categories from the visitor file
-df_visitor = create_dataframe('musea_finalv2_Grae_adjusted.csv')
+df_visitor = create_dataframe('Data/musea_finalv2_Grae_adjusted.csv')
 df_visitor = df_visitor.drop_duplicates(subset=['publicName'])
 df = df.merge(df_visitor, how='left', left_on='translationSetId', right_on='translationSetId')
 df = df.fillna(0)
 df.reset_index(level=0, inplace=True)
 
-temp = df['index'].to_list()
-print(temp)
-# Add all the facilites as on its own columns
-# df[['library', 'openair', 'parking', 'weelchairdisabled', 'trainstation', 'restaurant']] = False
 # For every facility add the increase/weight/update value which will be converted to the update arrays
 df = df.apply(create_true_falses_multiplication, axis=1)
 df.drop(columns='publicName_y', inplace=True)
@@ -272,37 +239,11 @@ disabled_array = create_lists(df, 'disabled', 23)
 trainstation_array = create_lists(df, 'trainstation', 6)
 restaurant_array = create_lists(df, 'restaurant', 4)
 
-
-# # Deze hieronder houden? lijkt me beetje overdreven en niet veel vertellen over musea
-# specialplaces_array = create_lists(df, 'specialplaces', 3)
-# # nature history museum category left out
-# # What about the category below, does it help our recommendation?
-# specialty_array = create_lists(df, 'specialty', 3)
-# zero_four_array = create_lists(df, 'zero_four', 2)
-# five_eight_array = create_lists(df, 'five_eight', 2)
-# nine_twelve_array = create_lists(df, 'nine_twelve', 2)
-# activity_array = create_lists(df, 'activity', 2)
-
-
-# amsterdam_array = create_lists(df, 'amsterdam', 4)
-# utrecht_array = create_lists(df, 'utrecht', 5)
-# denhaag_array = create_lists(df, 'denhaag', 5)
-# leiden_array = create_lists(df, 'leiden', 5)
-# arnhem_array = create_lists(df, 'arnhem', 5)
-# groningen_array = create_lists(df, 'groningen', 5)
-# rotterdam_array = create_lists(df, 'rotterdam', 5)
-# limburg_array =create_lists(df, 'limburg', 5)
-# friesland_array = create_lists(df, 'friesland', 5)
-# gelderland_array = create_lists(df, 'gelderland', 5)
-# drenthe_array = create_lists(df, 'drenthe', 5)
-# kasteel_array = create_lists(df, 'kasteel', 5)
-
+# Create final files with all the import rules and outcomes of the museum vectors
 df['vector'] = df.apply(create_row_vectors, axis=1)
-
-# print(df['vector'].head(n=50))
 vector_df = df[['translationSetId', 'vector']]
-
 vector_df.to_csv('vector_csv.csv')
-
+move_files('vector_csv.csv')
 df_rules_overview = create_rules_overview_df(df)
 df_rules_overview.to_csv('rules_overview.csv')
+shutil.move("%s/%s" % (fileDir, 'rules_overview.csv'), "%s/Data/%s" % (fileDir, 'rules_overview.csv'))
